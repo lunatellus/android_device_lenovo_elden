@@ -1,0 +1,21 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "vendor.lineage.touch-service.elden",
+    init_rc: ["vendor.lineage.touch-service.elden.rc"],
+    vintf_fragments: ["vendor.lineage.touch-service.elden.xml"],
+    relative_install_path: "hw",
+    proprietary: true,
+    srcs: [
+        "TouchHal.cpp",
+        "service.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "vendor.lineage.touch-V1-ndk",
+    ],
+}

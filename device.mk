@@ -363,6 +363,10 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal-service.qti \
     android.hardware.thermal@1.0.vendor
 
+# Touch
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch-service.elden
+
 # Update engine
 PRODUCT_PACKAGES += \
     update_engine \
