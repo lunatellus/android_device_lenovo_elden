@@ -54,13 +54,14 @@ TARGET_USES_UEFI := true
 TARGET_SCREEN_DENSITY := 440
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := elden,elden_prc,TB322FC
+TARGET_OTA_ASSERT_DEVICE := elden
 
 # Dtb/o
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
 BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtb
 
 # Filesystem
+BOARD_ROOT_EXTRA_FOLDERS += lenovocust
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config.fs
 
 # Init Boot
@@ -68,11 +69,17 @@ BOARD_INIT_BOOT_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 
 # Kernel
-BOARD_KERNEL_PAGESIZE   := 4096
-BOARD_KERNEL_BASE       := 0x00000000
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_RAMDISK_USE_LZ4 := true
+BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
 BOARD_KERNEL_CMDLINE := \
-    video=vfb:640x400,bpp=32,memsize=3072000
+    video=vfb:640x400,bpp=32,memsize=3072000 \
+    console=ttynull \
+    qcom_geni_serial.con_enabled=0
 
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
@@ -86,33 +93,18 @@ BOARD_BOOTCONFIG := \
 
 TARGET_NO_KERNEL_OVERRIDE := true
 TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
-PRODUCT_COPY_FILES += \
-	$(KERNEL_PATH)/kernel:kernel
-
-BOARD_KERNEL_IMAGE_NAME := Image
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-BOARD_RAMDISK_USE_LZ4 := true
-BOARD_USES_GENERIC_KERNEL_IMAGE := true
-BOARD_KERNEL_SEPARATED_DTBO := true
 
 # Kernel modules
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load))
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load.recovery))
+BOARD_SYSTEM_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/system_dlkm/*.ko)
+BOARD_SYSTEM_KERNEL_MODULES_LOAD := false
+BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/vendor_dlkm/*.ko)
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/vendor_dlkm/modules.blocklist
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_dlkm/modules.load))
-
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor_dlkm/,$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules) \
-    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor_ramdisk/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules) \
-    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/system_dlkm/,$(TARGET_COPY_OUT_SYSTEM_DLKM)/lib/modules)
-
-PRODUCT_COPY_FILES += \
-    $(KERNEL_PATH)/vendor_dlkm/q6_pdr_dlkm.ko:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules/q6_pdr_dlkm.ko \
-    $(KERNEL_PATH)/vendor_dlkm/q6_notifier_dlkm.ko:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules/q6_notifier_dlkm.ko \
-    $(KERNEL_PATH)/vendor_dlkm/snd_event_dlkm.ko:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules/snd_event_dlkm.ko \
-    $(KERNEL_PATH)/vendor_dlkm/gpr_dlkm.ko:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules/gpr_dlkm.ko \
-    $(KERNEL_PATH)/vendor_dlkm/spf_core_dlkm.ko:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules/spf_core_dlkm.ko \
-    $(KERNEL_PATH)/vendor_dlkm/adsp_loader_dlkm.ko:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules/adsp_loader_dlkm.ko \
-    $(KERNEL_PATH)/vendor_dlkm/qti_battery_charger.ko:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules/qti_battery_charger.ko
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/vendor_ramdisk/*.ko)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/vendor_ramdisk/modules.blocklist
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load))
+BOARD_DO_NOT_STRIP_VENDOR_MODULES := true
+BOARD_DO_NOT_STRIP_VENDOR_RAMDISK_MODULES := true
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
@@ -126,10 +118,10 @@ BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 104857600
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 100663296
 
-BOARD_SUPER_PARTITION_SIZE := 11811160064 # 0x580000000 / 2 as elden only allow half of total partition size
+BOARD_SUPER_PARTITION_SIZE := 23622320128
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_dlkm system_ext vendor vendor_dlkm
-BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 11806965760
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 23618125824
 
 BOARD_PARTITION_LIST := $(call to-upper, $(BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST))
 $(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := ext4))
@@ -147,6 +139,7 @@ TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/configs/properties/system_ext.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
 
 # Recovery
+$(call soong_config_set_bool,recovery,target_recovery_uses_qti_drm,true)
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
@@ -155,7 +148,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # Security
 BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
-VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
+VENDOR_SECURITY_PATCH := 2025-02-05
 
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk

@@ -1,8 +1,6 @@
 import /vendor/etc/ueventd.rc
 import /odm/etc/ueventd.rc
-# ELDEN code for ELDEN-550 by gaoyh14 at 20250228 start
 firmware_directories /vendor/firmware_mnt/image/ /etc/firmware/ /odm/firmware/ /vendor/firmware/ /firmware/image/
-# ELDEN code for ELDEN-550 by gaoyh14 at 20250228 end
 uevent_socket_rcvbuf_size 16M
 
 subsystem graphics

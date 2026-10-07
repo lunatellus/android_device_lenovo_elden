@@ -350,3 +350,19 @@ PRODUCT_PACKAGES += \
 # WiFi Display
 PRODUCT_PACKAGES += \
     libwfdaac_vendor
+
+# Kernel
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)-kernel/kernel:kernel \
+    $(LOCAL_PATH)-kernel/vendor_ramdisk/modules.load.recovery:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/modules.load.recovery \
+    $(LOCAL_PATH)-kernel/vendor_dlkm/system_dlkm.modules.blocklist:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
+
+# Recovery
+PRODUCT_PACKAGES += \
+    adsp_loader_dlkm.ko_recovery \
+    gpr_dlkm.ko_recovery \
+    q6_notifier_dlkm.ko_recovery \
+    q6_pdr_dlkm.ko_recovery \
+    qti_battery_charger.ko_recovery \
+    snd_event_dlkm.ko_recovery \
+    spf_core_dlkm.ko_recovery
