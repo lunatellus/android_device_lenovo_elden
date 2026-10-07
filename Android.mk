@@ -6,6 +6,8 @@
 LOCAL_PATH := $(call my-dir)
 
 ifeq ($(TARGET_DEVICE),elden)
+$(PRODUCT_OUT)/vbmeta_system.img: vendor/lenovo/elden/radio/pvmfw.img
+
 # Recovery loads these modules before vendor_dlkm is mounted.
 define elden-recovery-module
 include $$(CLEAR_VARS)
