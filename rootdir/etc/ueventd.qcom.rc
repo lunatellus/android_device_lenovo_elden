@@ -62,6 +62,9 @@
 #Import rc file
 import /vendor/etc/ueventd.qcom.userdebug.rc
 
+# Battery
+/sys/class/power_supply/battery battery_maintenance20 0660 system system
+
 
 # Firmware directory Path
 # Below macro will be read by uevent and path will
@@ -380,8 +383,6 @@ subsystem mem_buf_vm
 /dev/battery_data         0660   system     system
 
 # wlan
-/dev/wcnss_wlan           0660   system     system
-/dev/wcnss_ctrl           0660   system     system
 /sys/devices/soc/600000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/net/wlan0/queues/rx-* rps_cpus 0660 system system
 /sys/devices/soc/600000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/net/p2p0/queues/rx-* rps_cpus 0660 system system
 

@@ -1,0 +1,3 @@
+# From TB322FC_CN_OPEN_USER_Q00041.1_W_ZUXOS_1.5.10.259_ST_260611.
+# Include the stock descriptors in vbmeta_system without updating the partition.
+pvmfw.img

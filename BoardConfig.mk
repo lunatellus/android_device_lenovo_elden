@@ -7,9 +7,6 @@
 DEVICE_PATH := device/lenovo/elden
 KERNEL_PATH := $(DEVICE_PATH)-kernel
 
-BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
 # A/B
 AB_OTA_UPDATER := true
 
@@ -177,11 +174,7 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 
 # VINTF
 DEVICE_MANIFEST_SKUS := sun
-DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
-DEVICE_MANIFEST_SUN_FILES := \
-    $(DEVICE_PATH)/configs/vintf/manifest_sun.xml \
-    hardware/qcom-caf/sm8750/audio/primary-hal/configs/common/manifest_audiocorehal_default.xml \
-    hardware/qcom-caf/sm8750/audio/primary-hal/configs/common/audioeffectservice_qti.xml
+DEVICE_MANIFEST_SUN_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sun.xml
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(DEVICE_PATH)/configs/vintf/compatibility_matrix.device.xml \

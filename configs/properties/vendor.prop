@@ -153,6 +153,7 @@ vendor.gatekeeper.is_security_level_spu=0
 
 # Media
 debug.stagefright.c2inputsurface=-1
+media.c2.hal.selection=aidl
 
 # Perf
 ro.vendor.beluga.p=0x3
