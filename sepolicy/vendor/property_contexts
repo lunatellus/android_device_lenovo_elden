@@ -1,0 +1,4 @@
+persist.vendor.dolbyv.             u:object_r:vendor_dolbyv_prop:s0 prefix
+vendor.dolbyv.                     u:object_r:vendor_dolbyv_prop:s0 prefix
+persist.vendor.keymaster.ready    u:object_r:vendor_check_keymaster_prop:s0 exact string
+ro.odm.lenovo.attestationkey       u:object_r:vendor_check_keymaster_prop:s0 exact string

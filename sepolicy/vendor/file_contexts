@@ -1,0 +1,36 @@
+# Block devices
+/dev/block/platform/soc/1d84000\.ufshc/by-name/lenovocust       u:object_r:lenovocust_block_device:s0
+
+# Character devices
+/dev/aw8697_haptic_r    u:object_r:aac_richtap_dev_device:s0
+/dev/aw8697_haptic_l    u:object_r:aac_richtap_dev_device:s0
+/dev/lenovo_penraw     u:object_r:lenovo_device:s0
+
+# Daemons
+/vendor/bin/check_keymaster    u:object_r:check_keymaster_exec:s0
+
+# Dolby
+/vendor/bin/hw/vendor\.dolby\.dms\.service              u:object_r:hal_aidl_dms_default_exec:s0
+/vendor/bin/hw/dvs-aidl-service                         u:object_r:dvs_aidl_default_exec:s0
+/vendor/bin/hw/vendor\.dolby\.media\.c2-service-vision   u:object_r:vendorcodec_exec:s0
+/data/vendor/dolby(/.*)?                               u:object_r:vendor_dolby_data_file:s0
+
+# HALs
+/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.battery-service          u:object_r:hal_lenovobattery_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.display-service          u:object_r:hal_lenovodisplay_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.factory-service          u:object_r:hal_lenovofactory_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.hyperschedule-service    u:object_r:hal_lenovohyperschedule_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.keyboard-service         u:object_r:hal_lenovokeyboard_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.misc-service             u:object_r:hal_lenovomisc_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.performance-service      u:object_r:hal_lenovoperformance_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.touchscreen-service      u:object_r:hal_lenovotouchscreen_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.usb-service              u:object_r:hal_lenovousb_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch-service\.elden              u:object_r:hal_lineage_touch_default_exec:s0
+
+# Headset
+/sys/devices/platform/soc/ac0000\.qcom,qupv3_1_geni_se/a94000\.i2c/i2c-[0-9]/[0-9]-0043/direction     u:object_r:vendor_sysfs_headset:s0
+/sys/devices/platform/soc/ac0000\.qcom,qupv3_1_geni_se/a94000\.i2c/i2c-[0-9]/[0-9]-0042/direction2    u:object_r:vendor_sysfs_headset:s0
+
+# Vibrator
+/sys/devices/platform/soc/ac0000\.qcom,qupv3_1_geni_se/a98000\.i2c/i2c-[0-9]/[0-9]-005a/leds/vibrator_l(/.*)?    u:object_r:vendor_sysfs_vibrator:s0
+/sys/devices/platform/soc/ac0000\.qcom,qupv3_1_geni_se/a98000\.i2c/i2c-[0-9]/[0-9]-005b/leds/vibrator_r(/.*)?    u:object_r:vendor_sysfs_vibrator:s0

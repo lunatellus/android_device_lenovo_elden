@@ -1,0 +1,5 @@
+binder_use(hal_lenovobattery_server)
+hal_attribute_service(hal_lenovobattery, hal_lenovobattery_service)
+
+binder_call(hal_lenovobattery_client, hal_lenovobattery_server)
+binder_call(hal_lenovobattery_server, hal_lenovobattery_client)

@@ -1,0 +1,11 @@
+hal_client_domain(system_server, hal_lenovobattery)
+hal_client_domain(system_server, hal_lenovodisplay)
+hal_client_domain(system_server, hal_lenovofactory)
+hal_client_domain(system_server, hal_lenovohyperschedule)
+hal_client_domain(system_server, hal_lenovokeyboard)
+hal_client_domain(system_server, hal_lenovomisc)
+hal_client_domain(system_server, hal_lenovoperformance)
+hal_client_domain(system_server, hal_lenovotouchscreen)
+hal_client_domain(system_server, hal_lenovousb)
+
+allow system_server vendor_sysfs_input:file { getattr open read write };

@@ -1,0 +1,17 @@
+type hal_lenovotouchscreen_default, domain;
+hal_server_domain(hal_lenovotouchscreen_default, hal_lenovotouchscreen)
+
+type hal_lenovotouchscreen_default_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_lenovotouchscreen_default)
+
+allow hal_lenovotouchscreen_default {
+    proc_edge_zone
+    proc_game_edge
+    proc_game_mode
+    proc_high_report_rate
+    proc_panel_dire
+    proc_pen
+    proc_report_threshold
+    proc_touch_wake
+}:file rw_file_perms;
+allow hal_lenovotouchscreen_default sysfs:file rw_file_perms;

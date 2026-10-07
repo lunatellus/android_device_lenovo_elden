@@ -1,0 +1,26 @@
+# Block devices
+type lenovocust_block_device, dev_type;
+
+# Character devices
+type aac_richtap_dev_device, dev_type;
+type lenovo_device, dev_type;
+
+# Proc
+type proc_edge_zone, fs_type, proc_type;
+type proc_game_edge, fs_type, proc_type;
+type proc_game_mode, fs_type, proc_type;
+type proc_high_report_rate, fs_type, proc_type;
+type proc_panel_dire, fs_type, proc_type;
+type proc_report_threshold, fs_type, proc_type;
+type proc_touch_wake, fs_type, proc_type;
+type vendor_proc_ito, fs_type, proc_type;
+type vendor_proc_tpver, fs_type, proc_type;
+
+# Data
+type vendor_dolby_data_file, file_type, data_file_type;
+
+# Sysfs
+type vendor_sysfs_headset, fs_type, sysfs_type;
+type vendor_sysfs_input, fs_type, sysfs_type;
+type vendor_sysfs_simtray, fs_type, sysfs_type;
+type vendor_sysfs_vibrator, fs_type, sysfs_type;

@@ -1,0 +1,7 @@
+binder_use(hal_dvs_server)
+hal_attribute_service(hal_dvs, dvs_aidl_service)
+binder_call(hal_dvs_client, hal_dvs_server)
+binder_call(hal_dvs_server, hal_dvs_client)
+
+hal_client_domain(platform_app, hal_dvs)
+hal_client_domain(system_app, hal_dvs)

@@ -1,0 +1,8 @@
+type hal_lenovohyperschedule_default, domain;
+hal_server_domain(hal_lenovohyperschedule_default, hal_lenovohyperschedule)
+
+type hal_lenovohyperschedule_default_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_lenovohyperschedule_default)
+
+allow hal_lenovohyperschedule_default proc:file rw_file_perms;
+allow hal_lenovohyperschedule_default sysfs:file rw_file_perms;

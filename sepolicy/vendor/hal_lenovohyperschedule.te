@@ -1,0 +1,5 @@
+binder_use(hal_lenovohyperschedule_server)
+hal_attribute_service(hal_lenovohyperschedule, hal_lenovohyperschedule_service)
+
+binder_call(hal_lenovohyperschedule_client, hal_lenovohyperschedule_server)
+binder_call(hal_lenovohyperschedule_server, hal_lenovohyperschedule_client)

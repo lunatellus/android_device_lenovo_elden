@@ -1,1 +1,1 @@
-type proc_pen, proc_type, fs_type;
+type lenovocust_file, file_type;

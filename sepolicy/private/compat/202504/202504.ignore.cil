@@ -1,0 +1,3 @@
+(type new_objects)
+(typeattribute new_objects)
+(typeattributeset new_objects (new_objects proc_pen))

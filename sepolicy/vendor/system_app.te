@@ -1,0 +1,17 @@
+hal_client_domain(system_app, hal_lenovobattery)
+hal_client_domain(system_app, hal_lenovodisplay)
+hal_client_domain(system_app, hal_lenovofactory)
+hal_client_domain(system_app, hal_lenovohyperschedule)
+hal_client_domain(system_app, hal_lenovokeyboard)
+hal_client_domain(system_app, hal_lenovomisc)
+hal_client_domain(system_app, hal_lenovoperformance)
+hal_client_domain(system_app, hal_lenovotouchscreen)
+hal_client_domain(system_app, hal_lenovousb)
+
+allow system_app vendor_sysfs_headset:dir search;
+allow system_app vendor_sysfs_headset:file { getattr open read };
+allow system_app vendor_proc_ito:file { getattr open read };
+allow system_app vendor_proc_tpver:file { getattr open read };
+
+allow system_app vendor_sysfs_vibrator:dir r_dir_perms;
+allow system_app vendor_sysfs_vibrator:file rw_file_perms;

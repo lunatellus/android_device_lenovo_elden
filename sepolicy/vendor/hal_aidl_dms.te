@@ -1,0 +1,8 @@
+binder_use(hal_aidl_dms_server)
+hal_attribute_service(hal_aidl_dms, hal_aidl_dms_service)
+binder_call(hal_aidl_dms_client, hal_aidl_dms_server)
+binder_call(hal_aidl_dms_server, hal_aidl_dms_client)
+
+hal_client_domain(hal_audio_default, hal_aidl_dms)
+hal_client_domain(mediacodec, hal_aidl_dms)
+hal_client_domain(platform_app, hal_aidl_dms)

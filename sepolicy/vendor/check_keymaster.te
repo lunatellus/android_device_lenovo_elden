@@ -1,0 +1,20 @@
+type check_keymaster, domain;
+type check_keymaster_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(check_keymaster)
+
+set_prop(check_keymaster, vendor_check_keymaster_prop)
+get_prop(check_keymaster, vendor_tee_listener_prop)
+
+allow check_keymaster self:capability sys_nice;
+allow check_keymaster self:qipcrtr_socket create;
+allow check_keymaster self:socket create;
+allow check_keymaster tee_device:chr_file { ioctl open read write };
+allow check_keymaster ion_device:chr_file { ioctl open read };
+allow check_keymaster vendor_diag_device:chr_file { getattr ioctl open read write };
+allow check_keymaster firmware_file:dir search;
+allow check_keymaster firmware_file:file { getattr open read };
+allow check_keymaster rootfs:lnk_file getattr;
+allow check_keymaster mnt_vendor_file:dir search;
+allow check_keymaster vendor_persist_file:dir search;
+allow check_keymaster vendor_persist_drm_file:dir create_dir_perms;
+allow check_keymaster vendor_persist_drm_file:file create_file_perms;

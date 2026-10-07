@@ -1,0 +1,5 @@
+binder_use(hal_lenovousb_server)
+hal_attribute_service(hal_lenovousb, hal_lenovousb_service)
+
+binder_call(hal_lenovousb_client, hal_lenovousb_server)
+binder_call(hal_lenovousb_server, hal_lenovousb_client)

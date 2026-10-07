@@ -1,0 +1,5 @@
+binder_use(hal_lenovoperformance_server)
+hal_attribute_service(hal_lenovoperformance, hal_lenovoperformance_service)
+
+binder_call(hal_lenovoperformance_client, hal_lenovoperformance_server)
+binder_call(hal_lenovoperformance_server, hal_lenovoperformance_client)

@@ -1,0 +1,5 @@
+binder_use(hal_lenovodisplay_server)
+hal_attribute_service(hal_lenovodisplay, hal_lenovodisplay_service)
+
+binder_call(hal_lenovodisplay_client, hal_lenovodisplay_server)
+binder_call(hal_lenovodisplay_server, hal_lenovodisplay_client)

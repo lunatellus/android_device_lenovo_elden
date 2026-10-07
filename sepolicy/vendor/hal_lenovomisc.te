@@ -1,0 +1,5 @@
+binder_use(hal_lenovomisc_server)
+hal_attribute_service(hal_lenovomisc, hal_lenovomisc_service)
+
+binder_call(hal_lenovomisc_client, hal_lenovomisc_server)
+binder_call(hal_lenovomisc_server, hal_lenovomisc_client)
