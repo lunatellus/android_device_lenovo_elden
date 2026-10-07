@@ -13,5 +13,8 @@ tunnel.audio.encode=true
 # QTI
 ro.vendor.qti.va_aosp.support=1
 
+# SurfaceFlinger
+debug.sf.enable_vrr_config=1
+
 # WiFi display
 persist.debug.wfd.enable=1

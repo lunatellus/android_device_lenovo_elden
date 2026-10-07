@@ -274,6 +274,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service
 
+# Overlays
+PRODUCT_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay
+
 # Parts
 PRODUCT_PACKAGES += \
     LenovoParts
