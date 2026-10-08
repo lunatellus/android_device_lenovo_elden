@@ -40,12 +40,12 @@ SPDX-License-Identifier: BSD-3-Clause-Clear
         <version>1</version>
         <fqname>ISigma_miracast/default</fqname>
     </hal>
-   <hal format="aidl" optional="true">
+    <hal format="aidl" optional="true">
         <name>vendor.qti.qccsyshal_aidl</name>
         <version>1</version>
         <interface>
             <name>IQccsyshal</name>
             <instance>default</instance>
         </interface>
-   </hal>
+    </hal>
 </compatibility-matrix>
