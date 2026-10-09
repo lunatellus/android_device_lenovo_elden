@@ -179,6 +179,8 @@ BOARD_AVB_MAKE_VBMETA_SYSTEM_IMAGE_ARGS += \
 # VINTF
 DEVICE_MANIFEST_SKUS := sun
 DEVICE_MANIFEST_SUN_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sun.xml
+DEVICE_MANIFEST_SUN_FILES += \
+    hardware/qcom-caf/sm8750/audio/primary-hal/configs/sun/manifest_audio_qti_services.xml
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(DEVICE_PATH)/configs/vintf/compatibility_matrix.device.xml \
