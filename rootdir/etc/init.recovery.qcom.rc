@@ -26,13 +26,6 @@
 #
 
 on early-init
-    insmod /vendor/lib/modules/q6_pdr_dlkm.ko
-    insmod /vendor/lib/modules/q6_notifier_dlkm.ko
-    insmod /vendor/lib/modules/snd_event_dlkm.ko
-    insmod /vendor/lib/modules/gpr_dlkm.ko
-    insmod /vendor/lib/modules/spf_core_dlkm.ko
-    insmod /vendor/lib/modules/adsp_loader_dlkm.ko
-    insmod /vendor/lib/modules/qti_battery_charger.ko
     write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
     write /sys/class/remoteproc/remoteproc0/state start
 
