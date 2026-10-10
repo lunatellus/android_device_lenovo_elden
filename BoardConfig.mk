@@ -5,7 +5,6 @@
 #
 
 DEVICE_PATH := device/lenovo/elden
-KERNEL_PATH := $(DEVICE_PATH)-kernel
 
 # A/B
 AB_OTA_UPDATER := true
@@ -53,9 +52,9 @@ TARGET_SCREEN_DENSITY := 440
 # Assert
 TARGET_OTA_ASSERT_DEVICE := elden
 
-# Dtb/o
-BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
-BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtb
+# DTB / DTBO
+BOARD_USES_QCOM_MERGE_DTBS_SCRIPT := true
+TARGET_NEEDS_DTBOIMAGE := true
 
 # Filesystem
 BOARD_ROOT_EXTRA_FOLDERS += lenovocust
@@ -87,21 +86,63 @@ BOARD_BOOTCONFIG := \
     androidboot.vendor.qspa=true \
     androidboot.serialconsole=0
 
-TARGET_NO_KERNEL_OVERRIDE := true
-TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
+TARGET_KERNEL_SOURCE := kernel/lenovo/sm8750
+TARGET_KERNEL_CONFIG := \
+    gki_defconfig \
+    vendor/sun_perf.config \
+    vendor/lenovo/sun_perf.config
 
 # Kernel modules
-BOARD_SYSTEM_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/system_dlkm/*.ko)
 BOARD_SYSTEM_KERNEL_MODULES_LOAD := false
-BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/vendor_dlkm/*.ko)
-BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/vendor_dlkm/modules.blocklist
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_dlkm/modules.load))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/vendor_ramdisk/*.ko)
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_PATH)/vendor_ramdisk/modules.blocklist
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load))
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load.recovery))
-BOARD_DO_NOT_STRIP_VENDOR_MODULES := true
-BOARD_DO_NOT_STRIP_VENDOR_RAMDISK_MODULES := true
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(TARGET_KERNEL_SOURCE)/modules.vendor_blocklist.msm.sun
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load.vendor_dlkm))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load.recovery))
+BOOT_KERNEL_MODULES := \
+    $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD) \
+    $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD)
+SYSTEM_KERNEL_MODULES := $(strip $(shell cat $(DEVICE_PATH)/modules.list.system_dlkm))
+TARGET_AUTO_COLLECT_KERNEL_MODULE_DEPS := true
+
+TARGET_KERNEL_EXT_MODULE_ROOT := kernel/lenovo/sm8750-modules
+TARGET_KERNEL_EXT_MODULES := \
+    qcom/opensource/mmrm-driver \
+    qcom/opensource/mm-drivers/hw_fence \
+    qcom/opensource/mm-drivers/msm_ext_display \
+    qcom/opensource/mm-drivers/sync_fence \
+    qcom/opensource/audio-kernel \
+    qcom/opensource/securemsm-kernel \
+    qcom/opensource/synx-kernel \
+    qcom/opensource/camera-kernel \
+    qcom/opensource/data-kernel/drivers/smem-mailbox \
+    qcom/opensource/datarmnet-ext/mem \
+    qcom/opensource/dataipa/drivers/platform/msm \
+    qcom/opensource/datarmnet/core \
+    qcom/opensource/datarmnet-ext/aps \
+    qcom/opensource/datarmnet-ext/offload \
+    qcom/opensource/datarmnet-ext/perf \
+    qcom/opensource/datarmnet-ext/perf_tether \
+    qcom/opensource/datarmnet-ext/sch \
+    qcom/opensource/datarmnet-ext/shs \
+    qcom/opensource/datarmnet-ext/wlan \
+    qcom/opensource/display-drivers/msm \
+    qcom/opensource/dsp-kernel \
+    qcom/opensource/eva-kernel \
+    qcom/opensource/graphics-kernel \
+    qcom/opensource/spu-kernel \
+    qcom/opensource/touch-drivers \
+    qcom/opensource/video-driver \
+    qcom/opensource/wlan/platform \
+    qcom/opensource/wlan/qcacld-3.0/.kiwi_v2 \
+    qcom/opensource/wlan/qcacld-3.0/.peach \
+    qcom/opensource/wlan/qcacld-3.0/.peach_v2 \
+    qcom/opensource/wlan/qcacld-3.0/.qca6750 \
+    qcom/opensource/wlan/qcacld-3.0/.wcn7750 \
+    qcom/opensource/bt-kernel \
+    nxp/opensource/driver \
+    st/opensource/driver \
+    st/opensource/eSE-driver
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
