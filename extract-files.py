@@ -119,6 +119,8 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/etc/init/hw/init.qcom.rc': blob_fixup()
         .regex_replace(r'\nservice qti-testscripts .*\n(    .*\n)+', '\n')
         .regex_replace(r'\n    start qti-testscripts\n', '\n'),
+    'vendor/etc/seccomp_policy/syshealthmon.policy': blob_fixup()
+        .add_line_if_missing('lseek: 1'),
     (
         'vendor/etc/wifi/p2p_supplicant_overlay.conf',
         'vendor/etc/wifi/wpa_supplicant_overlay.conf',
