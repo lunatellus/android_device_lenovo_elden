@@ -4,6 +4,12 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+    <!-- Indicate available ColorDisplayManager.COLOR_MODE_xxx. -->
+    <integer-array name="config_availableColorModes">
+        <item>0</item>
+        <item>257</item>
+    </integer-array>
+
     <!-- Automatic brightness -->
     <bool name="config_automatic_brightness_available">true</bool>
     <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>

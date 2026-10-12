@@ -15,6 +15,7 @@ ro.vendor.qti.va_aosp.support=1
 
 # SurfaceFlinger
 debug.sf.enable_vrr_config=1
+persist.sys.sf.native_mode=257
 
 # WiFi display
 persist.debug.wfd.enable=1

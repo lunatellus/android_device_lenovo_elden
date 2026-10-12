@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Display settings screen, Color mode options -->
+    <string name="color_mode_option_standard">标准</string>
+    <string name="color_mode_option_vibrant">鲜艳</string>
+</resources>
