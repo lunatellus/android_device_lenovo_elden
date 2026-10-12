@@ -118,6 +118,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 3040
+TARGET_SCREEN_WIDTH := 1904
+
 # Bluetooth
 PRODUCT_PACKAGES += \
     aidl_default_audio_set_configurations_json \
