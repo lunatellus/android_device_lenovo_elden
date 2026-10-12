@@ -318,7 +318,7 @@ vendor/lib64/rfs/dsp/libworker_pool.so
 vendor/etc/audio/sku_sun/audio_policy_configuration.xml
 vendor/etc/audio/sku_sun/quasar_config.xml
 vendor/etc/audio/sku_sun_qssi/audio_policy_configuration.xml
-vendor/etc/audio/vendor_audio_interfaces.xml
+vendor/etc/audio/vendor_audio_interfaces.xml:vendor/etc/vendor_audio_interfaces.xml
 vendor/etc/audio_policy_volumes.xml
 vendor/etc/bluetooth_qti_hearing_aid_audio_policy_configuration.xml
 vendor/etc/default_volume_tables.xml
