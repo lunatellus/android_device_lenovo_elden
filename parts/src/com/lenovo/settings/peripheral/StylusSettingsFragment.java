@@ -6,19 +6,12 @@
 
 package com.lenovo.settings.peripheral;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Switch;
-import android.util.Log;
-
 import android.preference.PreferenceManager;
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceChangeListener;
+
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
-import com.android.settingslib.widget.MainSwitchPreference;
 
 import com.lenovo.settings.R;
 

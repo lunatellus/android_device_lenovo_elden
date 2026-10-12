@@ -57,6 +57,8 @@ public class PenUtilsService extends Service {
     @Override
     public void onDestroy() {
         if (DEBUG) Log.d(TAG, "onDestroy");
+        mInputManager.unregisterInputDeviceListener(mInputDeviceListener);
+        mSharedPrefs.unregisterOnSharedPreferenceChangeListener(mSharedPrefsListener);
         super.onDestroy();
     }
 
@@ -113,7 +115,8 @@ public class PenUtilsService extends Service {
 
     private boolean isDeviceLenovoPen(int id) {
         InputDevice inputDevice = mInputManager.getInputDevice(id);
-        return inputDevice.getVendorId() == 6127 && inputDevice.getProductId() == 24959;
+        return inputDevice != null && inputDevice.getVendorId() == 6127
+                && inputDevice.getProductId() == 24959;
     }
 
     private InputDeviceListener mInputDeviceListener = new InputDeviceListener() {
@@ -130,7 +133,7 @@ public class PenUtilsService extends Service {
             refreshPenMode();
         }
     };
-    
+
     private OnSharedPreferenceChangeListener mSharedPrefsListener = new OnSharedPreferenceChangeListener() {
         public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
             if (key.equals(STYLUS_KEY)) {
