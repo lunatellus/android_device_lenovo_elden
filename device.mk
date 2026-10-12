@@ -212,11 +212,6 @@ PRODUCT_PACKAGES += \
     lineage_charger_battery_scale_vendor \
     lineage_charger_font_vendor
 
-# IPACM
-PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml
-
 # Kernel
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/modules.blocklist.system_dlkm:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
@@ -307,8 +302,7 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.network-V3-ndk.vendor \
     android.hardware.radio@1.0.vendor \
     android.hardware.radio@1.1.vendor \
-    librmnetctl \
-    rild
+    librmnetctl
 
 # Rootdir
 PRODUCT_PACKAGES += \

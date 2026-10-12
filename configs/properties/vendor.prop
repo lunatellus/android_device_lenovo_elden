@@ -174,12 +174,6 @@ ro.soc.manufacturer=QTI
 # QCOMsysD
 persist.vendor.qcomsysd.enabled=1
 
-# Radio
-keyguard.no_require_sim=true
-persist.vendor.radio.enableadvancedscan=true
-persist.vendor.rcs.singlereg.feature=1
-ro.com.android.dataroaming=true
-
 # SPU
 vendor.spu.rkp_enabled=true
 
@@ -204,7 +198,6 @@ ro.config.alarm_vol_steps=15
 ro.config.media_vol_default=100
 ro.config.media_vol_steps=150
 ro.config.system_vol_steps=15
-ro.config.vc_call_vol_steps=11
 
 # WLAN
 wifi.aware.interface=wifi-aware0
