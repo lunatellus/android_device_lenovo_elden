@@ -12,6 +12,7 @@
 # Dolby
 /vendor/bin/hw/vendor\.dolby\.dms\.service              u:object_r:hal_aidl_dms_default_exec:s0
 /vendor/bin/hw/dvs-aidl-service                         u:object_r:dvs_aidl_default_exec:s0
+/vendor/bin/hw/vendor\.dolby\.media\.c2-default-service-dax u:object_r:vendorcodec_exec:s0
 /vendor/bin/hw/vendor\.dolby\.media\.c2-service-vision   u:object_r:vendorcodec_exec:s0
 /data/vendor/dolby(/.*)?                               u:object_r:vendor_dolby_data_file:s0
 
