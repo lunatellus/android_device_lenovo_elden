@@ -224,13 +224,10 @@ DEVICE_MANIFEST_SUN_FILES += \
     hardware/qcom-caf/sm8750/audio/primary-hal/configs/sun/manifest_audio_qti_services.xml
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
-    $(DEVICE_PATH)/configs/vintf/compatibility_matrix.device.xml \
     $(DEVICE_PATH)/configs/vintf/compatibility_matrix.lenovo.xml \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
 
-DEVICE_MATRIX_FILE := \
-    $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml \
-    hardware/qcom-caf/common/compatibility_matrix_aidl.xml
+DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix_aidl.xml
 
 # WiFi
 BOARD_WLAN_DEVICE := qcwcn
