@@ -4,6 +4,99 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+    <!-- Automatic brightness -->
+    <bool name="config_automatic_brightness_available">true</bool>
+    <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">3000</integer>
+
+    <!-- Ambient light levels in lux -->
+    <integer-array name="config_autoBrightnessLevels">
+        <item>5</item>
+        <item>15</item>
+        <item>30</item>
+        <item>100</item>
+        <item>180</item>
+        <item>400</item>
+        <item>550</item>
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
+        <item>2500</item>
+        <item>3000</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>8000</item>
+        <item>10000</item>
+    </integer-array>
+
+    <!-- Display brightness in nits for each ambient light level, starting at 0 lux -->
+    <array name="config_autoBrightnessDisplayValuesNits">
+        <item>8.0</item>
+        <item>8.0</item>
+        <item>30.0</item>
+        <item>70.0</item>
+        <item>100.0</item>
+        <item>120.0</item>
+        <item>150.0</item>
+        <item>180.0</item>
+        <item>210.0</item>
+        <item>270.0</item>
+        <item>340.0</item>
+        <item>420.0</item>
+        <item>480.0</item>
+        <item>650.0</item>
+        <item>690.0</item>
+        <item>715.0</item>
+        <item>750.0</item>
+    </array>
+
+    <!-- Screen brightness calibration: backlight values on the 0-255 scale -->
+    <integer-array name="config_screenBrightnessBacklight">
+        <item>0</item>
+        <item>4</item>
+        <item>10</item>
+        <item>23</item>
+        <item>34</item>
+        <item>40</item>
+        <item>50</item>
+        <item>61</item>
+        <item>70</item>
+        <item>91</item>
+        <item>115</item>
+        <item>142</item>
+        <item>162</item>
+        <item>182</item>
+        <item>201</item>
+        <item>236</item>
+        <item>255</item>
+    </integer-array>
+
+    <!-- Display brightness in nits corresponding to the backlight values -->
+    <array name="config_screenBrightnessNits">
+        <item>0.0</item>
+        <item>8.0</item>
+        <item>30.0</item>
+        <item>70.0</item>
+        <item>100.0</item>
+        <item>120.0</item>
+        <item>150.0</item>
+        <item>180.0</item>
+        <item>210.0</item>
+        <item>270.0</item>
+        <item>340.0</item>
+        <item>420.0</item>
+        <item>480.0</item>
+        <item>650.0</item>
+        <item>690.0</item>
+        <item>715.0</item>
+        <item>750.0</item>
+    </array>
+
+    <!-- Screen brightness range and default -->
+    <item format="float" name="config_screenBrightnessSettingMinimumFloat" type="dimen">0.0014031</item>
+    <item format="float" name="config_screenBrightnessSettingMaximumFloat" type="dimen">1.0</item>
+    <item format="float" name="config_screenBrightnessSettingDefaultFloat" type="dimen">0.413725</item>
+
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
     <bool name="config_showNavigationBar">true</bool>
