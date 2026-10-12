@@ -1,6 +1,3 @@
-# Block devices
-type lenovocust_block_device, dev_type;
-
 # Character devices
 type aac_richtap_dev_device, dev_type;
 type lenovo_device, dev_type;

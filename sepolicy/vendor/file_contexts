@@ -1,5 +1,4 @@
 # Block devices
-/dev/block/platform/soc/1d84000\.ufshc/by-name/lenovocust       u:object_r:lenovocust_block_device:s0
 
 # Character devices
 /dev/aw8697_haptic_r    u:object_r:aac_richtap_dev_device:s0

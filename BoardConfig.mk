@@ -57,7 +57,6 @@ BOARD_USES_QCOM_MERGE_DTBS_SCRIPT := true
 TARGET_NEEDS_DTBOIMAGE := true
 
 # Filesystem
-BOARD_ROOT_EXTRA_FOLDERS += lenovocust
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config.fs
 
 # Init Boot
