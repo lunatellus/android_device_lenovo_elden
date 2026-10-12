@@ -119,6 +119,12 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/etc/init/hw/init.qcom.rc': blob_fixup()
         .regex_replace(r'\nservice qti-testscripts .*\n(    .*\n)+', '\n')
         .regex_replace(r'\n    start qti-testscripts\n', '\n'),
+    (
+        'vendor/etc/init/vendor.lenovo.hardware.display-service.rc',
+        'vendor/etc/init/vendor.lenovo.hardware.performance-service.rc',
+        'vendor/etc/init/vendor.qti.hardware.vibrator_dual@1.0-service.rc',
+    ): blob_fixup()
+        .regex_replace(r'chmod 0?666 ', 'chmod 0660 '),
     'vendor/etc/seccomp_policy/syshealthmon.policy': blob_fixup()
         .add_line_if_missing('lseek: 1'),
     (

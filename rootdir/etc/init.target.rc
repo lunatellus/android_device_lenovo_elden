@@ -100,13 +100,13 @@ on post-fs-data
     chown system system /sys/class/hardinfo/interface/hardware_info/sar
     chown system system /sys/class/hardinfo/interface/hardware_info/hall
 
-    # Audio add for smartpa calibration
-    mkdir /mnt/vendor/persist/factory
-    mkdir /mnt/vendor/persist/factory/audio
-    chmod 0777 mnt/vendor/persist/factory/audio
-    chmod 0664 mnt/vendor/persist/factory/audio/aw_cali.bin
-    chown system system mnt/vendor/persist/factory/audio/aw_cali.bin
-    chmod 0777 /dev/aw882xx_smartpa
+    # Smart PA calibration
+    mkdir /mnt/vendor/persist/factory 0771 system system
+    mkdir /mnt/vendor/persist/factory/audio 0775 system audio
+    chown system audio /mnt/vendor/persist/factory/audio/aw_cali.bin
+    chmod 0664 /mnt/vendor/persist/factory/audio/aw_cali.bin
+    chown system audio /dev/aw882xx_smartpa
+    chmod 0660 /dev/aw882xx_smartpa
 
 on early-boot
     verity_update_state
@@ -115,24 +115,26 @@ on boot
     # Vibrator
     chown system system /sys/class/qcom-haptics/primitive_duration
     chmod 0600 /sys/class/qcom-haptics/primitive_duration
-    chmod 0666 /sys/class/leds/vibrator_r/f0_save
-    chmod 0666 /sys/class/leds/vibrator_l/f0_save
-    chmod 0666 /dev/aw8697_haptic_r
-    chmod 0666 /dev/aw8697_haptic_l
+    chown system system /sys/class/leds/vibrator_r/activate
+    chown system system /sys/class/leds/vibrator_r/activate_mode
+    chown system system /sys/class/leds/vibrator_r/index
+    chown system system /sys/class/leds/vibrator_r/duration
+    chown system system /sys/class/leds/vibrator_r/gain
+    chown system system /sys/class/leds/vibrator_r/double
+    chown system system /sys/class/leds/vibrator_l/activate
+    chown system system /sys/class/leds/vibrator_l/activate_mode
+    chown system system /sys/class/leds/vibrator_l/index
+    chown system system /sys/class/leds/vibrator_l/duration
+    chown system system /sys/class/leds/vibrator_l/gain
+    chown system system /sys/class/leds/vibrator_l/double
+    chown system system /sys/class/leds/vibrator_r/f0_save
+    chown system system /sys/class/leds/vibrator_l/f0_save
+    chmod 0660 /sys/class/leds/vibrator_r/f0_save
+    chmod 0660 /sys/class/leds/vibrator_l/f0_save
     chown system system /dev/aw8697_haptic_r
     chown system system /dev/aw8697_haptic_l
-    chmod 0666 /sys/class/leds/vibrator_r/activate
-    chmod 0666 /sys/class/leds/vibrator_r/activate_mode
-    chmod 0666 /sys/class/leds/vibrator_r/index
-    chmod 0666 /sys/class/leds/vibrator_r/duration
-    chmod 0666 /sys/class/leds/vibrator_r/gain
-    chmod 0666 /sys/class/leds/vibrator_r/double
-    chmod 0666 /sys/class/leds/vibrator_l/activate
-    chmod 0666 /sys/class/leds/vibrator_l/activate_mode
-    chmod 0666 /sys/class/leds/vibrator_l/index
-    chmod 0666 /sys/class/leds/vibrator_l/duration
-    chmod 0666 /sys/class/leds/vibrator_l/gain
-    chmod 0666 /sys/class/leds/vibrator_l/double
+    chmod 0660 /dev/aw8697_haptic_r
+    chmod 0660 /dev/aw8697_haptic_l
 
     write /dev/cpuset/audio-app/cpus 0-1
     # Add a cpuset for the camera daemon
@@ -211,28 +213,6 @@ on property:persist.lenovo.camera.autoframing.switcher=*
     setprop persist.odm.camera.autoframing.enable ${persist.lenovo.camera.autoframing.switcher}
 #camera property end
 
-on post-fs
-    chown system system /sys/devices/system/cpu/cpu0/thermal/control
-    chmod 666 /sys/devices/system/cpu/cpu0/thermal/control
-
-    # CPU scheduler
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    chown system system /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
-    chmod 666 /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
-    chown system system /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
-    chmod 666 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
-    chown system system /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
-    chmod 666 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
-    chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
-    chmod 666 /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
-    chown system system /sys/devices/system/cpu/cpu5/cpufreq/scaling_governor
-    chmod 666 /sys/devices/system/cpu/cpu5/cpufreq/scaling_governor
-    chown system system /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor
-    chmod 666 /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor
-    chown system system /sys/devices/system/cpu/cpu7/cpufreq/scaling_governor
-    chmod 666 /sys/devices/system/cpu/cpu7/cpufreq/scaling_governor
-
 on property:vendor.display.lcd_density=560
    setprop dalvik.vm.heapgrowthlimit 256m
 
@@ -286,11 +266,6 @@ on early-boot && property:persist.vendor.pcie.boot_option=*
 on property:sys.boot_completed=1
     mkdir /mnt/vendor/logfs 0644 system system
     mount vfat /dev/block/by-name/logfs /mnt/vendor/logfs rw noatime wait
-
-#pen dda
-on property:sys.boot_completed=1
-    chmod 0444 /dev/lenovo_penraw
-    chmod 0666 /sys/devices/platform/soc/ac7b000.qcom,cci0/ac7b000.qcom,cci0:qcom,actuator0/moveVCM
 
 # Perf HAL leaves a max frequency cpu_min_freq lock behind after boot
 service vendor.perf-unlock /vendor/bin/sh -c "/vendor/bin/sleep 5"

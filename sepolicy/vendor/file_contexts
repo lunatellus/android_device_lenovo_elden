@@ -3,6 +3,7 @@
 # Character devices
 /dev/aw8697_haptic_r    u:object_r:aac_richtap_dev_device:s0
 /dev/aw8697_haptic_l    u:object_r:aac_richtap_dev_device:s0
+/dev/aw882xx_smartpa    u:object_r:audio_device:s0
 /dev/lenovo_penraw     u:object_r:lenovo_device:s0
 
 # Daemons
