@@ -14,4 +14,3 @@ allow hal_lenovotouchscreen_default {
     proc_report_threshold
     proc_touch_wake
 }:file rw_file_perms;
-allow hal_lenovotouchscreen_default sysfs:file rw_file_perms;

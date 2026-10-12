@@ -1,13 +1,15 @@
 genfscon proc /HighReportRate       u:object_r:proc_high_report_rate:s0
+genfscon proc /lenovo_hyperschedule u:object_r:proc_lenovo_hyperschedule:s0
 genfscon proc /edge_grid_zone       u:object_r:proc_edge_zone:s0
 genfscon proc /game_edge            u:object_r:proc_game_edge:s0
 genfscon proc /game_mode            u:object_r:proc_game_mode:s0
 genfscon proc /gesture_control      u:object_r:proc_touch_wake:s0
 genfscon proc /panel_direction      u:object_r:proc_panel_dire:s0
 genfscon proc /report_threshold     u:object_r:proc_report_threshold:s0
+genfscon proc /support_pen          u:object_r:proc_pen:s0
 genfscon proc /android_touch/self_test    u:object_r:vendor_proc_ito:s0
 genfscon proc /nvt_fw_version             u:object_r:vendor_proc_tpver:s0
 
-genfscon sysfs /devices/platform/soc/ac7b000.qcom,cci0/ac7b000.qcom,cci0:qcom,actuator0/moveVCM    u:object_r:vendor_sysfs_input:s0
+genfscon sysfs /devices/platform/soc/af54000.qcom,dp_display    u:object_r:vendor_sysfs_displayport:s0
 genfscon sysfs /devices/virtual/hardinfo/interface/hardware_info/sdcard_status    u:object_r:vendor_sysfs_simtray:s0
 genfscon sysfs /class/hardinfo/interface/hardware_info/sdcard_status              u:object_r:vendor_sysfs_simtray:s0
