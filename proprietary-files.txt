@@ -2315,7 +2315,6 @@ vendor/bin/init.qti.qcv.sh
 vendor/etc/init/init.qti.qcv.rc
 
 # QESDK
-system_ext/etc/vintf/manifest/vendor.qti.qesdsys.service.xml
 vendor/bin/qesdk-manager
 vendor/bin/qesdk-secmanager
 vendor/bin/ssgqmigd
