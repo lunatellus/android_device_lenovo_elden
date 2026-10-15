@@ -12,5 +12,7 @@ genfscon proc /nvt_fw_version             u:object_r:vendor_proc_tpver:s0
 
 genfscon sysfs /devices/platform/soc/af54000.qcom,dp_display    u:object_r:vendor_sysfs_displayport:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,ucsi/power_supply/ucsi-source-psy-soc:qcom,pmic_glink:qcom,ucsi2    u:object_r:vendor_sysfs_usb_supply:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,ucsi/power_supply/ucsi-source-psy-soc:qcom,pmic_glink:qcom,ucsi2/wakeup    u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/ac0000.qcom,qupv3_1_geni_se/a90000.spi/spi_master/spi0/spi0.0/wakeup    u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/hardinfo/interface/hardware_info/sdcard_status    u:object_r:vendor_sysfs_simtray:s0
 genfscon sysfs /class/hardinfo/interface/hardware_info/sdcard_status              u:object_r:vendor_sysfs_simtray:s0
