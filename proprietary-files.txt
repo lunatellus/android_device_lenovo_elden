@@ -2706,13 +2706,6 @@ vendor/bin/hw/sxrservice
 vendor/etc/seccomp_policy/sxr@2.0.policy
 vendor/lib64/libsxrservice.so
 
-# System Health Monitor
-vendor/bin/vendor.qti.syshealthmon-service
-vendor/etc/init/vendor.qti.syshealthmon-service.rc
-vendor/etc/seccomp_policy/syshealthmon.policy
-vendor/etc/vintf/manifest/vendor.qti.syshealthmon-service.xml
-vendor/lib64/vendor.qti.syshealthmon-V1-ndk.so
-
 # TFTP
 vendor/bin/tftp_server
 vendor/etc/init/vendor.qti.tftp.rc
