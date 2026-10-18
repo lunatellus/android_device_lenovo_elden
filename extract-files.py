@@ -126,7 +126,6 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup()
         .regex_replace(r'chmod 0?666 ', 'chmod 0660 '),
     (
-        'vendor/etc/seccomp_policy/qesdksec.policy',
         'vendor/etc/seccomp_policy/qsap_qapeservice.policy',
         'vendor/etc/seccomp_policy/syshealthmon.policy',
     ): blob_fixup()
