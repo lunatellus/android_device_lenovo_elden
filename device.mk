@@ -240,6 +240,14 @@ PRODUCT_PACKAGES += \
     libgatekeeper.vendor \
     libkeymaster_messages.vendor
 
+# Lineage Health
+PRODUCT_PACKAGES += \
+    vendor.lineage.health-service.default
+
+$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/battery_maintenance20)
+$(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
+$(call soong_config_set,lineage_health,charging_control_charging_disabled,1)
+
 # Media
 PRODUCT_PACKAGES += \
     android.hardware.media.bufferpool2-V2-ndk.vendor \
