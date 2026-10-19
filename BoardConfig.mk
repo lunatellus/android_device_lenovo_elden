@@ -58,7 +58,7 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_NEEDS_DTBOIMAGE := true
 
 # Filesystem
-TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config.fs
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # Init Boot
 BOARD_INIT_BOOT_HEADER_VERSION := 4
@@ -126,11 +126,11 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOARD_PLATFORM := sun
 
 # Properties
-TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
-TARGET_PRODUCT_PROP += $(DEVICE_PATH)/configs/properties/product.prop
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/properties/system.prop
-TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/configs/properties/system_ext.prop
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
+TARGET_ODM_PROP += $(DEVICE_PATH)/properties/odm.prop
+TARGET_PRODUCT_PROP += $(DEVICE_PATH)/properties/product.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/properties/system.prop
+TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/properties/system_ext.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/properties/vendor.prop
 
 # Recovery
 $(call soong_config_set_bool,recovery,target_recovery_uses_qti_drm,true)
@@ -174,12 +174,12 @@ BOARD_AVB_MAKE_VBMETA_SYSTEM_IMAGE_ARGS += \
 
 # VINTF
 DEVICE_MANIFEST_SKUS := sun
-DEVICE_MANIFEST_SUN_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sun.xml
+DEVICE_MANIFEST_SUN_FILES := $(DEVICE_PATH)/vintf/manifest_sun.xml
 DEVICE_MANIFEST_SUN_FILES += \
     hardware/qcom-caf/sm8750/audio/primary-hal/configs/sun/manifest_audio_qti_services.xml
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
-    $(DEVICE_PATH)/configs/vintf/compatibility_matrix.lenovo.xml \
+    $(DEVICE_PATH)/vintf/compatibility_matrix.lenovo.xml \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
 
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix_aidl.xml
