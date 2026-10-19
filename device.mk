@@ -218,7 +218,7 @@ PRODUCT_PACKAGES += \
 
 # Kernel
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/modules.blocklist.system_dlkm:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
+    kernel/platform/kernel-6.12/vendor/lenovo/sm8750/modules-lists/modules.systemdlkm_blocklist.msm.sun:$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules/system_dlkm.modules.blocklist
 
 # Keymint
 PRODUCT_PACKAGES += \

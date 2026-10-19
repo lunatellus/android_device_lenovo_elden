@@ -1,15 +1,19 @@
 [
   {
+    "type": "kernel",
+    "version": "6.12"
+  },
+  {
     "repository": "android_kernel_lenovo_sm8750",
-    "target_path": "kernel/lenovo/sm8750"
+    "target_path": "kernel/platform/kernel-6.12/vendor/lenovo/sm8750"
   },
   {
     "repository": "android_kernel_lenovo_sm8750-devicetrees",
-    "target_path": "kernel/lenovo/sm8750-devicetrees"
+    "target_path": "kernel/platform/kernel-6.12/vendor/lenovo/sm8750-devicetrees"
   },
   {
     "repository": "android_kernel_lenovo_sm8750-modules",
-    "target_path": "kernel/lenovo/sm8750-modules"
+    "target_path": "kernel/platform/kernel-6.12/vendor/lenovo/sm8750-modules"
   },
   {
     "repository": "proprietary_vendor_lenovo_elden",

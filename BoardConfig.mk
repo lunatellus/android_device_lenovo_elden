@@ -53,7 +53,8 @@ TARGET_SCREEN_DENSITY := 440
 TARGET_OTA_ASSERT_DEVICE := elden
 
 # DTB / DTBO
-BOARD_USES_QCOM_MERGE_DTBS_SCRIPT := true
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_NEEDS_DTBOIMAGE := true
 
 # Filesystem
@@ -67,7 +68,6 @@ BOARD_MKBOOTIMG_INIT_ARGS += --header_version $(BOARD_INIT_BOOT_HEADER_VERSION)
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_RAMDISK_USE_LZ4 := true
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
@@ -84,15 +84,14 @@ BOARD_BOOTCONFIG := \
     androidboot.vendor.qspa=true \
     androidboot.serialconsole=0
 
-TARGET_KERNEL_SOURCE := kernel/lenovo/sm8750
-TARGET_KERNEL_CONFIG := \
-    gki_defconfig \
-    vendor/sun_perf.config \
-    vendor/lenovo/sun_perf.config
+TARGET_KERNEL_PLATFORM_TARGET := sun_perf
+TARGET_KERNEL_SOURCE := vendor/lenovo/sm8750
+TARGET_KERNEL_UNSAFE_DDK_HEADERS := true
+TARGET_KERNEL_VERSION := 6.12
 
 # Kernel modules
 BOARD_SYSTEM_KERNEL_MODULES_LOAD := false
-BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(TARGET_KERNEL_SOURCE)/modules.vendor_blocklist.msm.sun
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(DEVICE_PATH)/modules.blocklist
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load.vendor_dlkm))
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE)
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load))
@@ -100,47 +99,6 @@ BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVIC
 BOOT_KERNEL_MODULES := \
     $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD) \
     $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD)
-SYSTEM_KERNEL_MODULES := $(strip $(shell cat $(DEVICE_PATH)/modules.list.system_dlkm))
-TARGET_AUTO_COLLECT_KERNEL_MODULE_DEPS := true
-
-TARGET_KERNEL_EXT_MODULE_ROOT := kernel/lenovo/sm8750-modules
-TARGET_KERNEL_EXT_MODULES := \
-    qcom/opensource/mmrm-driver \
-    qcom/opensource/mm-drivers/hw_fence \
-    qcom/opensource/mm-drivers/msm_ext_display \
-    qcom/opensource/mm-drivers/sync_fence \
-    qcom/opensource/audio-kernel \
-    qcom/opensource/securemsm-kernel \
-    qcom/opensource/synx-kernel \
-    qcom/opensource/camera-kernel \
-    qcom/opensource/data-kernel/drivers/smem-mailbox \
-    qcom/opensource/datarmnet-ext/mem \
-    qcom/opensource/dataipa/drivers/platform/msm \
-    qcom/opensource/datarmnet/core \
-    qcom/opensource/datarmnet-ext/aps \
-    qcom/opensource/datarmnet-ext/offload \
-    qcom/opensource/datarmnet-ext/perf \
-    qcom/opensource/datarmnet-ext/perf_tether \
-    qcom/opensource/datarmnet-ext/sch \
-    qcom/opensource/datarmnet-ext/shs \
-    qcom/opensource/datarmnet-ext/wlan \
-    qcom/opensource/display-drivers/msm \
-    qcom/opensource/dsp-kernel \
-    qcom/opensource/eva-kernel \
-    qcom/opensource/graphics-kernel \
-    qcom/opensource/spu-kernel \
-    qcom/opensource/touch-drivers \
-    qcom/opensource/video-driver \
-    qcom/opensource/wlan/platform \
-    qcom/opensource/wlan/qcacld-3.0/.kiwi_v2 \
-    qcom/opensource/wlan/qcacld-3.0/.peach \
-    qcom/opensource/wlan/qcacld-3.0/.peach_v2 \
-    qcom/opensource/wlan/qcacld-3.0/.qca6750 \
-    qcom/opensource/wlan/qcacld-3.0/.wcn7750 \
-    qcom/opensource/bt-kernel \
-    nxp/opensource/driver \
-    st/opensource/driver \
-    st/opensource/eSE-driver
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
