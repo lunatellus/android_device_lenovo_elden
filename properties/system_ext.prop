@@ -1,2 +1,24 @@
+# CNE
+persist.vendor.cne.feature=1
+
 # DPM
 persist.vendor.dpm.vndr.feature=11
+
+# Media
+media.aac_51_output_enabled=true
+media.settings.xml=/vendor/etc/media_profiles_sun.xml
+media.stagefright.enable-fma2dp=true
+media.stagefright.thumbnail.prefer_hw_codecs=true
+qcom.hw.aac.encoder=true
+ro.mediaserver.64b.enable=true
+tunnel.audio.encode=true
+
+# QTI
+ro.vendor.qti.va_aosp.support=1
+
+# SurfaceFlinger
+debug.sf.enable_vrr_config=1
+persist.sys.sf.native_mode=257
+
+# WiFi display
+persist.debug.wfd.enable=1
