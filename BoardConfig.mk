@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2023 The Android Open Source Project
-#
+# SPDX-FileCopyrightText: The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 #
 
@@ -31,6 +30,9 @@ TARGET_ARCH_VARIANT := armv8-a-branchprot
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_VARIANT := oryon
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := elden
+
 # Audio
 BOARD_SUPPORTS_OPENSOURCE_STHAL := true
 TARGET_PROVIDES_AUDIO_HAL := true
@@ -48,9 +50,6 @@ TARGET_USES_UEFI := true
 
 # Display
 TARGET_SCREEN_DENSITY := 440
-
-# Assert
-TARGET_OTA_ASSERT_DEVICE := elden
 
 # DTB / DTBO
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
@@ -117,9 +116,20 @@ BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_dlkm system_ext vendor vendor_dlkm
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 23618125824
 
-BOARD_PARTITION_LIST := $(call to-upper, $(BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST))
-$(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := ext4))
-$(foreach p, $(BOARD_PARTITION_LIST), $(eval TARGET_COPY_OUT_$(p) := $(call to-lower, $(p))))
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
+
+TARGET_COPY_OUT_ODM := odm
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
@@ -143,9 +153,9 @@ TARGET_USERIMAGES_USE_F2FS := true
 BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 VENDOR_SECURITY_PATCH := 2025-02-05
 
-# Sepolicy
+# SEPolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
-BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+include $(DEVICE_PATH)/sepolicy/SEPolicy.mk
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
@@ -198,5 +208,5 @@ WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
-# Inherit from the proprietary version
+# Include the proprietary files BoardConfig.
 include vendor/lenovo/elden/BoardConfigVendor.mk

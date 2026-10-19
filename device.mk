@@ -1,39 +1,14 @@
 #
-# Copyright (C) 2023 The Android Open Source Project
-#
+# SPDX-FileCopyrightText: The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 #
-
-# Get non-open-source specific aspects
-$(call inherit-product, vendor/lenovo/elden/elden-vendor.mk)
-
-# Enable virtual AB with vendor ramdisk
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
-
-# Enable project quotas and casefolding for emulated storage without sdcardfs.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-
-# Setup dalvik vm configs
-$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
-
-# Enforce generic ramdisk allow list
-$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
-
-# Virtualization service
-$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
 
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
-# SHIPPING API
-BOARD_SHIPPING_API_LEVEL := 202404
-PRODUCT_SHIPPING_API_LEVEL := 35
-
-# AAPT
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
-
 # A/B
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/vabc_features.mk)
+
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
@@ -51,6 +26,10 @@ PRODUCT_PACKAGES += \
     otapreopt_script
 
 PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
+
+# AAPT
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -118,10 +97,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 3040
-TARGET_SCREEN_WIDTH := 1904
-
 # Bluetooth
 PRODUCT_PACKAGES += \
     aidl_default_audio_set_configurations_json \
@@ -142,6 +117,10 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
     vendor.qti.hardware.bluetooth_audio@2.1.vendor
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 3040
+TARGET_SCREEN_WIDTH := 1904
+
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti \
@@ -157,12 +136,18 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.aon-V2-ndk.vendor \
     vendor.qti.hardware.camera.offlinecamera-V2-ndk.vendor
 
+# Dalvik
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-V1-ndk.vendor \
     android.hardware.drm-V2-ndk.vendor \
     android.hardware.drm-service.clearkey \
     com.android.hardware.cas
+
+# Enforce generic ramdisk allow list
+$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 
 # Fastboot
 PRODUCT_PACKAGES += \
@@ -215,6 +200,24 @@ PRODUCT_PACKAGES += \
     lineage_charger_battery_fail_vendor \
     lineage_charger_battery_scale_vendor \
     lineage_charger_font_vendor
+
+# Init
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.recovery.qcom.rc \
+    init.target.rc \
+    ueventd.qcom.rc \
+    vendor_bt_firmware_mountpoint \
+    vendor_dsp_mountpoint \
+    vendor_firmware_mnt_mountpoint
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
+
+# Input
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/idc/Vendor_17ef_Product_617f.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/Vendor_17ef_Product_617f.idc \
+    $(LOCAL_PATH)/configs/keylayout/Vendor_17ef_Product_617f.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_17ef_Product_617f.kl
 
 # Kernel
 PRODUCT_COPY_FILES += \
@@ -285,12 +288,12 @@ PRODUCT_PACKAGES += \
     FrameworksResTarget \
     SettingsResTarget
 
+# Partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
 # Parts
 PRODUCT_PACKAGES += \
     LenovoParts
-
-# Partitions
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Power
 PRODUCT_PACKAGES += \
@@ -319,19 +322,6 @@ PRODUCT_PACKAGES += \
     android.hardware.radio@1.1.vendor \
     librmnetctl
 
-# Init
-PRODUCT_PACKAGES += \
-    fstab.qcom \
-    init.recovery.qcom.rc \
-    init.target.rc \
-    ueventd.qcom.rc \
-    vendor_bt_firmware_mountpoint \
-    vendor_dsp_mountpoint \
-    vendor_firmware_mnt_mountpoint
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
-
 # Sensors
 PRODUCT_PACKAGES += \
     android.frameworks.sensorservice-V1-ndk.vendor \
@@ -346,14 +336,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.dynamic.head_tracker.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.dynamic.head_tracker.xml
 
-# Keylayout
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/idc/Vendor_17ef_Product_617f.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/Vendor_17ef_Product_617f.idc \
-    $(LOCAL_PATH)/configs/keylayout/Vendor_17ef_Product_617f.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/Vendor_17ef_Product_617f.kl
+# Shipping API
+BOARD_SHIPPING_API_LEVEL := 202404
+PRODUCT_SHIPPING_API_LEVEL := 35
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+
+# Storage
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -399,6 +391,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
 
+# Virtualization
+$(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk)
+
 # Vndservice manager
 PRODUCT_PACKAGES += \
     vndservicemanager
@@ -428,6 +423,9 @@ PRODUCT_PACKAGES += \
 
 # WiFi firmware symlinks
 PRODUCT_PACKAGES += \
-    firmware_wlanmdsp.otaupdate_symlink \
+    firmware_WCNSS_qcom_cfg.ini_symlink \
     firmware_wlan_mac.bin_symlink \
-    firmware_WCNSS_qcom_cfg.ini_symlink
+    firmware_wlanmdsp.otaupdate_symlink
+
+# Inherit from the proprietary files makefile.
+$(call inherit-product, vendor/lenovo/elden/elden-vendor.mk)
