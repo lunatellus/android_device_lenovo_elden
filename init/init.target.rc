@@ -183,17 +183,3 @@ service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
 on early-boot && property:persist.vendor.pcie.boot_option=*
     write /sys/bus/platform/devices/1c00000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}
     write /sys/bus/platform/devices/1c08000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}
-
-# Perf HAL leaves a max frequency cpu_min_freq lock behind after boot
-service vendor.perf-unlock /vendor/bin/sh -c "/vendor/bin/sleep 5"
-    class late_start
-    user root
-    group root system
-    oneshot
-    disabled
-
-on property:sys.boot_completed=1
-    start vendor.perf-unlock
-
-on property:init.svc.vendor.perf-unlock=stopped && property:sys.boot_completed=1
-    write /sys/kernel/msm_performance/parameters/cpu_min_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
