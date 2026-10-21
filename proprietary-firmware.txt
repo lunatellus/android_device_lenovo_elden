@@ -1,33 +1,33 @@
-# From TB322FC_CN_OPEN_USER_Q00041.1_W_ZUXOS_1.5.10.259_ST_260611.
-# The stock 259 ABL no longer trusts the AOSP key and breaks the
-# unlock-free boot chain, so keep the old ABL from the AOSP port package.
+# From TB322FC_1.5.10.358.
+# The ABL is the old one from the AOSP port package: the stock 358 ABL
+# no longer trusts the AOSP key and breaks the unlock-free boot chain.
 abl-old-original.elf:abl.img;AB
-aop.mbn:aop.img;AB
-aop_devcfg.mbn:aop_config.img;AB
-BTFM.bin:bluetooth.img;AB
-cpucp.elf:cpucp.img;AB
-cpucp_dtbs.elf:cpucp_dtb.img;AB
-devcfg.mbn:devcfg.img;AB
-dspso.bin:dsp.img;AB
-featenabler.mbn:featenabler.img;AB
-hypvm.mbn:hyp.img;AB
-imagefv.elf:imagefv.img;AB
-keymint.mbn:keymaster.img;AB
-NON-HLOS.bin:modem.img;AB
-multi_image.mbn:multiimgoem.img;AB
-multi_image_qti.mbn:multiimgqti.img;AB
-pdp.elf:pdp.img;AB
-pdp_cdb.elf:pdp_cdb.img;AB
-pvmfw.img;AB
-qupv3fw.elf:qupfw.img;AB
-qweslicstore.bin:qweslicstore.img;AB
-shrm.elf:shrm.img;AB
-dcd.mbn:soccp_dcd.img;AB
-sdi.mbn:soccp_debug.img;AB
-spu_service.mbn:spuservice.img;AB
-tz.mbn:tz.img;AB
-uefi.elf:uefi.img;AB
-uefi_sec.mbn:uefisecapp.img;AB
-xbl_s.melf:xbl.img;AB
-xbl_config.elf:xbl_config.img;AB
-XblRamdump.elf:xbl_ramdump.img;AB
+aop_a.img:aop.img;AB
+aop_config_a.img:aop_config.img;AB
+bluetooth_a.img:bluetooth.img;AB
+cpucp_a.img:cpucp.img;AB
+cpucp_dtb_a.img:cpucp_dtb.img;AB
+devcfg_a.img:devcfg.img;AB
+dsp_a.img:dsp.img;AB
+featenabler_a.img:featenabler.img;AB
+hyp_a.img:hyp.img;AB
+imagefv_a.img:imagefv.img;AB
+keymaster_a.img:keymaster.img;AB
+modem_a.img:modem.img;AB
+multiimgoem_a.img:multiimgoem.img;AB
+multiimgqti_a.img:multiimgqti.img;AB
+pdp_a.img:pdp.img;AB
+pdp_cdb_a.img:pdp_cdb.img;AB
+pvmfw_a.img:pvmfw.img;AB
+qupfw_a.img:qupfw.img;AB
+qweslicstore_a.img:qweslicstore.img;AB
+shrm_a.img:shrm.img;AB
+soccp_dcd_a.img:soccp_dcd.img;AB
+soccp_debug_a.img:soccp_debug.img;AB
+spuservice_a.img:spuservice.img;AB
+tz_a.img:tz.img;AB
+uefi_a.img:uefi.img;AB
+uefisecapp_a.img:uefisecapp.img;AB
+xbl_a.img:xbl.img;AB
+xbl_config_a.img:xbl_config.img;AB
+xbl_ramdump_a.img:xbl_ramdump.img;AB
