@@ -2343,8 +2343,6 @@ vendor/bin/qlm-service
 vendor/etc/init/init.qlm-service.rc
 
 # QMI
-system_ext/etc/sysconfig/qti_telephony_system_packages_config.xml
-system_ext/etc/sysconfig/qti_whitelist_system_ext.xml
 vendor/bin/irsc_util
 vendor/bin/qmipriod
 vendor/bin/qrtr-cfg
@@ -2737,7 +2735,6 @@ vendor/etc/thermal_user_case.conf
 # Thermal engine
 vendor/bin/thermal-engine-v2
 vendor/etc/init/init_thermal-engine-v2.rc
-vendor/etc/thermal-engine.conf
 
 # Time services
 vendor/app/TimeService/TimeService.apk
