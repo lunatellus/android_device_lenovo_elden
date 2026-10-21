@@ -2261,6 +2261,7 @@ vendor/etc/permissions/sku_sun/android.hardware.sensor.light.xml
 vendor/etc/permissions/sku_sun/android.hardware.sensor.proximity.xml
 vendor/etc/permissions/sku_sun/android.hardware.sensor.stepcounter.xml
 vendor/etc/permissions/sku_sun/android.hardware.sensor.stepdetector.xml
+vendor/etc/permissions/sku_sun/android.hardware.strongbox_keystore.xml
 
 # Power-off alarm
 system_ext/app/PowerOffAlarm/PowerOffAlarm.apk
