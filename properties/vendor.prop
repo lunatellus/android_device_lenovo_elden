@@ -33,6 +33,7 @@ vendor.qc2audio.per_frame.flac.dec.enabled=true
 vendor.qc2audio.suspend.enabled=true
 
 # Bluetooth
+bluetooth.device.default_name=Legion Tab Y700
 bluetooth.profile.asha.central.enabled=true
 bluetooth.profile.bap.broadcast.assist.enabled=true
 bluetooth.profile.bap.broadcast.source.enabled=true
@@ -176,6 +177,7 @@ persist.vendor.qcomsysd.enabled=1
 vendor.spu.rkp_enabled=true
 
 # USB
+vendor.usb.product_string=Legion Tab Y700
 ro.recovery.usb.adb.pid=D001
 ro.recovery.usb.fastboot.pid=4EE0
 ro.recovery.usb.vid=18D1
