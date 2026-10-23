@@ -7,6 +7,7 @@
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <cstdio>
 
 using ::android::base::ReadFileToString;
 using ::android::base::WriteStringToFile;
@@ -50,11 +51,20 @@ namespace lineage {
 namespace touch {
 
 ndk::ScopedAStatus GloveMode::getEnabled(bool* _aidl_return) {
-    auto status = readNode(kGloveModePath, _aidl_return);
-    if (status.isOk()) {
-        *_aidl_return = !*_aidl_return;
+    std::string value;
+    if (!ReadFileToString(kGloveModePath, &value)) {
+        LOG(ERROR) << "Failed to read " << kGloveModePath;
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
-    return status;
+
+    int state;
+    if (std::sscanf(value.c_str(), "Report Threshold state %d!", &state) != 1) {
+        LOG(ERROR) << "Unexpected value in " << kGloveModePath << ": " << value;
+        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+    }
+
+    *_aidl_return = state == 0;
+    return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus GloveMode::setEnabled(bool enabled) {
