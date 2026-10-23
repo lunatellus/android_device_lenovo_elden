@@ -1971,7 +1971,6 @@ vendor/bin/init.qcom.post_boot.sh
 vendor/bin/init.qcom.sdio.sh
 vendor/bin/init.qcom.sh
 vendor/etc/charger_fw_fstab.qti
-vendor/etc/init/hw/init.qcom.rc
 
 # Kernel
 vendor/bin/init.kernel.init_boot-memory.sh
