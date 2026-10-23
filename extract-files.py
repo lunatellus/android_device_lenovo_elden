@@ -116,9 +116,6 @@ blob_fixups: blob_fixups_user_type = {
         'vendor.qti.hardware.display.composer3-V1-ndk',
         'libtinyxml2',
     ),
-    'vendor/etc/init/hw/init.qcom.rc': blob_fixup()
-        .regex_replace(r'\nservice qti-testscripts .*\n(    .*\n)+', '\n')
-        .regex_replace(r'\n    start qti-testscripts\n', '\n'),
     (
         'vendor/etc/init/vendor.lenovo.hardware.display-service.rc',
         'vendor/etc/init/vendor.lenovo.hardware.performance-service.rc',
