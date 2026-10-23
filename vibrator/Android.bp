@@ -8,7 +8,7 @@ cc_binary {
     init_rc: ["android.hardware.vibrator-service.elden.rc"],
     vintf_fragments: ["android.hardware.vibrator-service.elden.xml"],
     relative_install_path: "hw",
-    proprietary: true,
+    vendor: true,
     srcs: [
         "Vibrator.cpp",
         "service.cpp",
