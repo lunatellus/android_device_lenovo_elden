@@ -50,11 +50,15 @@ namespace lineage {
 namespace touch {
 
 ndk::ScopedAStatus GloveMode::getEnabled(bool* _aidl_return) {
-    return readNode(kGloveModePath, _aidl_return);
+    auto status = readNode(kGloveModePath, _aidl_return);
+    if (status.isOk()) {
+        *_aidl_return = !*_aidl_return;
+    }
+    return status;
 }
 
 ndk::ScopedAStatus GloveMode::setEnabled(bool enabled) {
-    return writeNode(kGloveModePath, enabled);
+    return writeNode(kGloveModePath, !enabled);
 }
 
 ndk::ScopedAStatus HighTouchPollingRate::getEnabled(bool* _aidl_return) {
