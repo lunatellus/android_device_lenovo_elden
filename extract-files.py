@@ -4,9 +4,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-import json
-from pathlib import Path
-
 from extract_utils.fixups_blob import (
     blob_fixup,
     blob_fixups_user_type,
@@ -51,44 +48,11 @@ def prebuilt(*libs: str) -> blob_fixup:
     return fixup
 
 
-def fixup_le_audio(ctx, file, file_path, *args, **kwargs):
-    path = Path(file_path)
-    document = json.loads(path.read_text())
-    strategies = {
-        'MONO_ONE_CIS_PER_DEVICE': (1, 1),
-        'STEREO_TWO_CISES_PER_DEVICE': (2, 1),
-        'STEREO_ONE_CIS_PER_DEVICE': (1, 2),
-    }
-    for config in document['codec_configurations']:
-        rows = []
-        for row in config['subconfigurations']:
-            # Already converted dumps can be extracted again.
-            if 'device_cnt' not in row and 'configuration_strategy' not in row:
-                if row.get('ase_channel_cnt') not in (1, 2) or row['ase_cnt'] not in (1, 2):
-                    raise ValueError('Invalid LE Audio subconfiguration')
-                rows.append(row)
-                continue
-            strategy = row.pop('configuration_strategy', 'MONO_ONE_CIS_PER_DEVICE')
-            ases, channels = strategies[strategy]
-            devices = row.pop('device_cnt')
-            total = row['ase_cnt']
-            if type(devices) is not int or devices not in (1, 2) or total != devices * ases:
-                raise ValueError('Inconsistent LE Audio device/ASE count')
-            row['ase_channel_cnt'] = channels
-            # The AOSP consumer expands only one or two ASEs per row.
-            for offset in range(0, total, 2):
-                rows.append({**row, 'ase_cnt': min(2, total - offset)})
-        config['subconfigurations'] = rows
-    path.write_text(json.dumps(document, indent=2) + '\n')
-
-
 blob_fixups: blob_fixups_user_type = {
     (
         'vendor/bin/hw/android.hardware.security.keymint-service-spu-qti',
         'vendor/lib64/libspukeymint.so',
     ): prebuilt('android.hardware.security.sharedsecret-V2-ndk'),
-    'vendor/etc/aidl/le_audio/aidl_audio_set_configurations.json': blob_fixup()
-        .call(fixup_le_audio, need_tmp_dir=False),
     (
         'vendor/bin/poweropt-service',
         'vendor/lib64/libaodoptfeature.so',
