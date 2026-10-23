@@ -181,6 +181,9 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 BOARD_AVB_MAKE_VBMETA_SYSTEM_IMAGE_ARGS += \
     --include_descriptors_from_image vendor/lenovo/elden/radio/pvmfw.img
 
+# the build system doesn't track the pvmfw descriptor above
+$(PRODUCT_OUT)/vbmeta_system.img: $(PRODUCT_OUT)/pvmfw.img
+
 # VINTF
 DEVICE_MANIFEST_SKUS := sun
 DEVICE_MANIFEST_SUN_FILES := $(DEVICE_PATH)/vintf/manifest_sun.xml
