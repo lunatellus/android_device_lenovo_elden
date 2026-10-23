@@ -1,8 +1,6 @@
 # Block devices
 
 # Character devices
-/dev/aw8697_haptic_r    u:object_r:aac_richtap_dev_device:s0
-/dev/aw8697_haptic_l    u:object_r:aac_richtap_dev_device:s0
 /dev/aw882xx_smartpa    u:object_r:audio_device:s0
 
 # Daemons
@@ -16,6 +14,7 @@
 /data/vendor/dolby(/.*)?                               u:object_r:vendor_dolby_data_file:s0
 
 # HALs
+/(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator-service\.elden         u:object_r:hal_vibrator_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.battery-service          u:object_r:hal_lenovobattery_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.display-service          u:object_r:hal_lenovodisplay_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.factory-service          u:object_r:hal_lenovofactory_default_exec:s0
@@ -30,6 +29,9 @@
 # Headset
 /sys/devices/platform/soc/ac0000\.qcom,qupv3_1_geni_se/a94000\.i2c/i2c-[0-9]/[0-9]-0043/direction     u:object_r:vendor_sysfs_headset:s0
 /sys/devices/platform/soc/ac0000\.qcom,qupv3_1_geni_se/a94000\.i2c/i2c-[0-9]/[0-9]-0042/direction2    u:object_r:vendor_sysfs_headset:s0
+
+# Persist
+/mnt/vendor/persist/factory/vibcali_[lr]    u:object_r:vendor_persist_haptics_file:s0
 
 # Vibrator
 /sys/devices/platform/soc/ac0000\.qcom,qupv3_1_geni_se/a98000\.i2c/i2c-[0-9]/[0-9]-005a/leds/vibrator_l(/.*)?    u:object_r:vendor_sysfs_vibrator:s0

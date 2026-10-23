@@ -1,0 +1,21 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "android.hardware.vibrator-service.elden",
+    init_rc: ["android.hardware.vibrator-service.elden.rc"],
+    vintf_fragments: ["android.hardware.vibrator-service.elden.xml"],
+    relative_install_path: "hw",
+    proprietary: true,
+    srcs: [
+        "Vibrator.cpp",
+        "service.cpp",
+    ],
+    shared_libs: [
+        "android.hardware.vibrator-V2-ndk",
+        "libbase",
+        "libbinder_ndk",
+    ],
+}

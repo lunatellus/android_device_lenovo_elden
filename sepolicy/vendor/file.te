@@ -1,6 +1,3 @@
-# Character devices
-type aac_richtap_dev_device, dev_type;
-
 # Proc
 type proc_edge_zone, fs_type, proc_type;
 type proc_game_edge, fs_type, proc_type;
