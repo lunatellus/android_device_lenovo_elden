@@ -24,13 +24,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl" optional="true">
-        <name>vendor.qti.hardware.vibrator_dual.device</name>
-        <interface>
-            <name>IVibratorDual</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <hal format="aidl">
         <name>vendor.lenovo.hardware.battery</name>
         <version>5</version>
