@@ -2783,7 +2783,6 @@ vendor/firmware/ffu_config.txt
 odm/etc/aac_richtap_l.config
 odm/etc/aac_richtap_r.config
 vendor/bin/hw/vendor.qti.hardware.vibrator_dual@1.0-service
-vendor/etc/init/vendor.qti.hardware.vibrator_dual@1.0-service.rc
 vendor/etc/vintf/manifest/vendor.qti.hardware.vibrator_dual.xml
 vendor/lib64/hw/vibrator.default.so
 vendor/lib64/libaacvibrator.so
