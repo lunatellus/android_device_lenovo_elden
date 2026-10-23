@@ -306,10 +306,6 @@ PRODUCT_PACKAGES += \
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# Parts
-PRODUCT_PACKAGES += \
-    LenovoParts
-
 # Perf
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perf/perfconfigstore.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfconfigstore.xml
