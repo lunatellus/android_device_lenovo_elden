@@ -406,7 +406,7 @@ PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/usb/etc
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator-V2-ndk.vendor \
-    vendor.qti.hardware.vibrator.service
+    android.hardware.vibrator-service.elden
 
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
