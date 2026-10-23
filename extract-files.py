@@ -119,7 +119,6 @@ blob_fixups: blob_fixups_user_type = {
     (
         'vendor/etc/init/vendor.lenovo.hardware.display-service.rc',
         'vendor/etc/init/vendor.lenovo.hardware.performance-service.rc',
-        'vendor/etc/init/vendor.qti.hardware.vibrator_dual@1.0-service.rc',
     ): blob_fixup()
         .regex_replace(r'chmod 0?666 ', 'chmod 0660 '),
     'vendor/etc/seccomp_policy/qsap_qapeservice.policy': blob_fixup()

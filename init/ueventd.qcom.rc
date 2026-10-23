@@ -465,6 +465,22 @@ subsystem mem_buf_vm
 /sys/class/qcom-haptics    v_gain_error        0640    system    audio
 /sys/class/qcom-haptics    i_gain_error        0640    system    audio
 
+# Vibrator
+/sys/class/leds/vibrator_r    activate    0660    system    system
+/sys/class/leds/vibrator_r    activate_mode    0660    system    system
+/sys/class/leds/vibrator_r    index    0660    system    system
+/sys/class/leds/vibrator_r    duration    0660    system    system
+/sys/class/leds/vibrator_r    gain    0660    system    system
+/sys/class/leds/vibrator_r    double    0660    system    system
+/sys/class/leds/vibrator_r    f0_save    0660    system    system
+/sys/class/leds/vibrator_l    activate    0660    system    system
+/sys/class/leds/vibrator_l    activate_mode    0660    system    system
+/sys/class/leds/vibrator_l    index    0660    system    system
+/sys/class/leds/vibrator_l    duration    0660    system    system
+/sys/class/leds/vibrator_l    gain    0660    system    system
+/sys/class/leds/vibrator_l    double    0660    system    system
+/sys/class/leds/vibrator_l    f0_save    0660    system    system
+
 # NPU device
 /dev/msm_npu             0644   system     system
 
