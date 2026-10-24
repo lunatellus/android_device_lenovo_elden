@@ -21,6 +21,3 @@ PRODUCT_MODEL := TB322FC
 PRODUCT_CHARACTERISTICS := nosdcard,tablet
 
 PRODUCT_GMS_CLIENTID_BASE := android-lenovo
-
-# Dalvik
-PRODUCT_ENABLE_UFFD_GC := true
