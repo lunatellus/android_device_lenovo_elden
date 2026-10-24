@@ -354,7 +354,6 @@ vendor/lib64/soundfx/libdownmixaidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libdynamicsprocessingaidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libdynproc.so
 vendor/lib64/soundfx/libeffectproxy.so
-vendor/lib64/soundfx/libhapticgenerator.so
 vendor/lib64/soundfx/libloudnessenhanceraidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libreverbaidl.so;DISABLE_DEPS
 vendor/lib64/soundfx/libreverbwrapper.so
@@ -1459,8 +1458,8 @@ vendor/bin/cnss_diag
 vendor/bin/coresight_reset_source_sink.sh
 vendor/bin/diag_mdlog
 vendor/lib64/libdiag.so
-vendor/lib64/vendor.qti.diaghal-V1-ndk.so;MODULE_SUFFIX=-vendor
-vendor/lib64/vendor.qti.diaghal@1.0.so;MODULE_SUFFIX=-vendor
+vendor/lib64/vendor.qti.diaghal-V1-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.diaghal@1.0.so;MODULE_SUFFIX=_vendor
 
 # Display Config
 vendor/etc/displayconfig/display_id_4630946916234099603.xml
@@ -1586,8 +1585,8 @@ vendor/lib64/libsdmutils.so
 vendor/lib64/libtestutils.so
 vendor/lib64/libtinyxml2_1.so
 vendor/lib64/libvmfilexfer.so
-vendor/lib64/vendor.qti.hardware.display.allocator@4.0.so:vendor/lib64/vendor.qti.hardware.display.allocator@4.0_prebuilt.so;FIX_SONAME
-vendor/lib64/vendor.qti.hardware.display.composer3-V1-ndk.so:vendor/lib64/vendor.qti.hardware.display.composer3-V1-ndk_prebuilt.so;FIX_SONAME
+vendor/lib64/android.hardware.graphics.allocator-V1-ndk.so:vendor/lib64/android.hardware.graphics.allocator-V1-ndk_vendor.so;FIX_SONAME
+vendor/lib64/vendor.qti.hardware.display.composer3-V1-ndk.so:vendor/lib64/vendor.qti.hardware.display.composer3-V1-ndk_vendor.so;FIX_SONAME
 
 # Dolby
 vendor/bin/hw/dvs-aidl-service
@@ -1932,7 +1931,7 @@ vendor/lib64/lib-rtpcommon.so
 vendor/lib64/lib-rtpcore.so
 vendor/lib64/lib-rtpsl.so
 vendor/lib64/librcc.so
-vendor/lib64/vendor.qti.ImsRtpService-V1-ndk.so;MODULE_SUFFIX=-vendor
+vendor/lib64/vendor.qti.ImsRtpService-V1-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.ImsRtpService-aidl-Impl.so
 vendor/lib64/vendor.qti.hardware.radio.ims@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.ims@1.1.so
@@ -1998,11 +1997,10 @@ vendor/bin/hw/android.hardware.security.keymint-service-spu-qti
 vendor/etc/init/android.hardware.security.keymint-service-qti.rc
 vendor/etc/init/android.hardware.security.keymint-service-spu-qti.rc
 vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
-vendor/lib64/android.hardware.security.sharedsecret-V2-ndk.so:vendor/lib64/android.hardware.security.sharedsecret-V2-ndk_prebuilt.so;FIX_SONAME
+vendor/lib64/android.hardware.security.sharedsecret-V2-ndk.so:vendor/lib64/android.hardware.security.sharedsecret-V2-ndk_vendor.so;FIX_SONAME
 vendor/lib64/libqtikeymint.so
 vendor/lib64/libspukeymint.so
 vendor/lib64/libspukeymintdeviceutils.so
-vendor/lib64/libspukeymintprovision.so
 vendor/lib64/libspukeymintutils.so
 
 # Lights
@@ -2237,20 +2235,7 @@ vendor/lib64/libpowercallback.so
 vendor/lib64/libpowercore.so
 
 # Prebuilt dependencies
-vendor/lib64/android.hardware.audio.core-V2-ndk.so:vendor/lib64/android.hardware.audio.core-V2-ndk_prebuilt.so;FIX_SONAME
-vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk.so:vendor/lib64/android.hardware.audio.core.sounddose-V2-ndk_prebuilt.so;FIX_SONAME
-vendor/lib64/android.hardware.bluetooth.audio-V4-ndk.so:vendor/lib64/android.hardware.bluetooth.audio-V4-ndk_prebuilt.so;FIX_SONAME
-vendor/lib64/android.hardware.common-V2-ndk_platform.so:vendor/lib64/android.hardware.common-V2-ndk_platform_prebuilt.so;FIX_SONAME
-vendor/lib64/android.hardware.graphics.allocator-V1-ndk.so:vendor/lib64/android.hardware.graphics.allocator-V1-ndk_prebuilt.so;FIX_SONAME
-vendor/lib64/android.hardware.graphics.common-V5-ndk.so:vendor/lib64/android.hardware.graphics.common-V5-ndk_prebuilt.so;FIX_SONAME
-vendor/lib64/android.hardware.graphics.composer3-V3-ndk.so:vendor/lib64/android.hardware.graphics.composer3-V3-ndk_prebuilt.so;FIX_SONAME
-vendor/lib64/android.hardware.security.keymint-V2-ndk.so:vendor/lib64/android.hardware.security.keymint-V2-ndk_prebuilt.so;FIX_SONAME
-vendor/lib64/android.media.audio.common.types-V2-ndk.so:vendor/lib64/android.media.audio.common.types-V2-ndk_prebuilt.so;FIX_SONAME
-vendor/lib64/android.media.audio.common.types-V3-ndk.so:vendor/lib64/android.media.audio.common.types-V3-ndk_prebuilt.so;FIX_SONAME
-vendor/lib64/libaudioutils.so:vendor/lib64/libaudioutils_prebuilt.so;FIX_SONAME
-vendor/lib64/libtensorflowlite_c.so:vendor/lib64/libtensorflowlite_c_prebuilt.so;FIX_SONAME
-vendor/lib64/libtinyxml2.so:vendor/lib64/libtinyxml2_prebuilt.so;FIX_SONAME
-vendor/lib64/libvibratorutils.so:vendor/lib64/libvibratorutils_prebuilt.so;FIX_SONAME
+vendor/lib64/libtensorflowlite_c.so:vendor/lib64/libtensorflowlite_c_vendor.so;FIX_SONAME
 
 # Psiclient
 vendor/bin/hw/vendor.qti.psiclient@1.0-service

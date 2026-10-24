@@ -38,21 +38,9 @@ PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := lz4
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-# ANT+
-PRODUCT_PACKAGES += \
-    com.dsi.ant@1.0.vendor
-
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio.common-V3-ndk.vendor \
-    android.hardware.audio.common-V4-ndk.vendor \
-    android.hardware.audio.common@5.0.vendor \
     android.hardware.audio.core.sounddose-V1-ndk.vendor \
-    android.hardware.audio.core.sounddose-V2-ndk.vendor \
-    android.hardware.audio.effect-V2-ndk.vendor \
-    android.media.audio.common.types-V2-ndk.vendor \
-    android.media.audio.common.types-V3-ndk.vendor \
-    android.media.audio.common.types-V4-ndk.vendor \
     audio.primary.default \
     audio.r_submix.default \
     audio.usb.default \
@@ -66,17 +54,13 @@ PRODUCT_PACKAGES += \
     libagm_pcm_plugin \
     libagmclient \
     libagmipcservice \
-    libalsautils.vendor \
     libalsautilsv2.vendor \
     libar-acdb \
     libar-gpr \
     libar-gsl \
     libats \
     libaudio_aidl_conversion_common_ndk.vendor \
-    libaudioaidlcommon.vendor \
     libaudiochargerlistener \
-    libaudioroute.vendor \
-    libaudioutils.vendor \
     libbatterylistener \
     libcustomva_intf \
     libfmpal \
@@ -91,14 +75,9 @@ PRODUCT_PACKAGES += \
     libpalipcservice \
     libsndcardparser \
     libsoundtriggerhal.qti \
-    libtinyalsa.vendor \
     libtinyalsav2.vendor \
     libtinycompress \
-    libvui_intf \
-    qti-audio-types-aidl-V1-ndk.vendor \
-    vendor.qti.hardware.agm-V1-ndk \
-    vendor.qti.hardware.pal-V1-ndk \
-    vendor.qti.hardware.paleventnotifier-V2-ndk.vendor
+    libvui_intf
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
@@ -108,21 +87,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     aidl_default_audio_set_configurations_json \
     aidl_default_audio_set_scenarios_json \
-    android.hardware.bluetooth-V1-ndk.vendor \
-    android.hardware.bluetooth.audio-V5-ndk.vendor \
     android.hardware.bluetooth.audio-impl \
-    android.hardware.bluetooth.audio@2.0.vendor \
-    android.hardware.bluetooth.audio@2.1.vendor \
-    android.hardware.bluetooth.finder-V1-ndk.vendor \
-    android.hardware.bluetooth.lmp_event-V1-ndk.vendor \
-    android.hardware.bluetooth@1.0.vendor \
     lib_bt_aptx \
     lib_bt_ble \
     lib_bt_bundle \
-    libbluetooth_audio_session_aidl_shim \
-    vendor.qti.hardware.bluetooth.audio-V1-ndk.vendor \
-    vendor.qti.hardware.bluetooth_audio@2.0.vendor \
-    vendor.qti.hardware.bluetooth_audio@2.1.vendor
+    libbluetooth_audio_session_aidl_shim
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 3040
@@ -133,23 +102,11 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti \
     android.hardware.boot-service.qti.recovery
 
-# Camera
-PRODUCT_PACKAGES += \
-    android.hardware.camera.common-V1-ndk.vendor \
-    android.hardware.camera.device-V2-ndk.vendor \
-    android.hardware.camera.metadata-V2-ndk.vendor \
-    android.hardware.camera.provider-V2-ndk.vendor \
-    libcamera_metadata.vendor \
-    vendor.qti.hardware.camera.aon-V2-ndk.vendor \
-    vendor.qti.hardware.camera.offlinecamera-V2-ndk.vendor
-
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm-V1-ndk.vendor \
-    android.hardware.drm-V2-ndk.vendor \
     android.hardware.drm-service.clearkey \
     com.android.hardware.cas
 
@@ -162,9 +119,6 @@ PRODUCT_PACKAGES += \
 
 # Graphics
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator-V2-ndk.vendor \
-    android.hardware.graphics.common-V7-ndk.vendor \
-    android.hardware.graphics.composer3-V4-ndk.vendor \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     gralloc.default \
     init.qti.display_boot.rc \
@@ -173,20 +127,10 @@ PRODUCT_PACKAGES += \
     libgpu_tonemapper \
     libqservice \
     mapper.qti \
-    vendor.display.config@1.0.vendor \
-    vendor.display.config@2.0.vendor \
-    vendor.qti.hardware.display.aiqe-V2-ndk.vendor \
     vendor.qti.hardware.display.allocator-service \
-    vendor.qti.hardware.display.color-V1-ndk.vendor \
     vendor.qti.hardware.display.composer-service.rc \
     vendor.qti.hardware.display.composer-service.xml \
-    vendor.qti.hardware.display.config-V12-ndk.vendor \
-    vendor.qti.hardware.display.config-V2-ndk.vendor \
-    vendor.qti.hardware.display.config-V5-ndk.vendor \
-    vendor.qti.hardware.display.config-V7-ndk.vendor \
-    vendor.qti.hardware.display.demura-V1-ndk.vendor \
-    vendor.qti.hardware.display.demura-service \
-    vendor.qti.hardware.display.postproc-V1-ndk.vendor
+    vendor.qti.hardware.display.demura-service
 
 PRODUCT_COPY_FILES += \
     hardware/qcom-caf/sm8750/display/core/config/snapdragon_color_libs_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/snapdragon_color_libs_config.xml
@@ -236,23 +180,7 @@ PRODUCT_COPY_FILES += \
 
 # Keymint
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper-V1-ndk.vendor \
-    android.hardware.hardware_keystore.xml \
-    android.hardware.identity-V5-ndk.vendor \
-    android.hardware.keymaster-V3-ndk.vendor \
-    android.hardware.keymaster@3.0.vendor \
-    android.hardware.keymaster@4.0.vendor \
-    android.hardware.keymaster@4.1.vendor \
-    android.hardware.security.keymint-V1-ndk.vendor \
-    android.hardware.security.keymint-V3-ndk.vendor \
-    android.hardware.security.keymint-V4-ndk.vendor \
-    android.hardware.security.rkp-V3-ndk.vendor \
-    android.hardware.security.secureclock-V1-ndk.vendor \
-    android.hardware.security.sharedsecret-V1-ndk.vendor \
-    android.hardware.weaver-V2-ndk.vendor \
-    android.system.keystore2-V1-ndk.vendor \
-    libgatekeeper.vendor \
-    libkeymaster_messages.vendor
+    android.hardware.hardware_keystore.xml
 
 # Lineage Health
 PRODUCT_PACKAGES += \
@@ -264,29 +192,8 @@ $(call soong_config_set,lineage_health,charging_control_charging_disabled,1)
 
 # Media
 PRODUCT_PACKAGES += \
-    android.hardware.media.bufferpool2-V2-ndk.vendor \
-    android.hardware.media.bufferpool@2.0.vendor \
-    android.hardware.media.c2-V1-ndk.vendor \
-    android.hardware.media.c2@1.0.vendor \
-    android.hardware.media.c2@1.1.vendor \
-    android.hardware.media.c2@1.2.vendor \
-    android.hardware.media.omx@1.0.vendor \
-    android.hardware.media@1.0.vendor \
-    libavservices_minijail.vendor \
-    libcodec2.vendor \
-    libcodec2_aidl.vendor \
-    libcodec2_hal_common.vendor \
-    libcodec2_hidl@1.0.vendor \
-    libcodec2_hidl@1.1.vendor \
-    libcodec2_hidl@1.2.vendor \
     libcodec2_hidl_plugin \
-    libcodec2_shim \
-    libcodec2_soft_common.vendor \
-    libcodec2_vndk.vendor \
-    libsfplugin_ccodec_utils.vendor \
-    libstagefright_aidl_bufferpool2.vendor \
-    libstagefright_bufferpool@2.0.1.vendor \
-    libstagefright_foundation.vendor
+    libcodec2_shim
 
 # Memtrack
 PRODUCT_PACKAGES += \
@@ -312,11 +219,7 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-V6-ndk.vendor \
     android.hardware.power-service-qti \
-    android.hardware.power@1.0.vendor \
-    android.hardware.power@1.1.vendor \
-    android.hardware.power@1.2.vendor \
     power.default
 
 PRODUCT_COPY_FILES += \
@@ -327,27 +230,11 @@ $(call soong_config_set,qtipower,tap_to_wake_node,/proc/gesture_control)
 # QSPA
 PRODUCT_PACKAGES += \
     qspa_vendor.rc \
-    vendor.qti.hardware.qspa-V1-ndk.vendor \
     vendor.qti.qspa-service
-
-# RIL
-PRODUCT_PACKAGES += \
-    android.hardware.radio-V3-ndk.vendor \
-    android.hardware.radio.data-V3-ndk.vendor \
-    android.hardware.radio.network-V3-ndk.vendor \
-    android.hardware.radio@1.0.vendor \
-    android.hardware.radio@1.1.vendor \
-    librmnetctl
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.frameworks.sensorservice-V1-ndk.vendor \
-    android.hardware.sensors-V3-ndk.vendor \
     android.hardware.sensors-service.multihal \
-    android.hardware.sensors@1.0.vendor \
-    android.hardware.sensors@2.0-ScopedWakelock.vendor \
-    android.hardware.sensors@2.0.vendor \
-    android.hardware.sensors@2.1.vendor \
     libsensorndkbridge
 
 PRODUCT_COPY_FILES += \
@@ -366,10 +253,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal-V1-ndk.vendor \
-    android.hardware.thermal-V2-ndk.vendor \
-    android.hardware.thermal-service.qti \
-    android.hardware.thermal@1.0.vendor
+    android.hardware.thermal-service.qti
 
 # Touch
 PRODUCT_PACKAGES += \
@@ -386,12 +270,8 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb-V1-ndk.vendor \
     android.hardware.usb-service.qti \
-    android.hardware.usb.gadget-V1-ndk.vendor \
-    android.hardware.usb.gadget-service.qti \
-    android.hardware.usb.gadget@1.0.vendor \
-    android.hardware.usb.gadget@1.1.vendor
+    android.hardware.usb.gadget-service.qti
 
 PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
@@ -402,7 +282,6 @@ PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/usb/etc
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator-V2-ndk.vendor \
     android.hardware.vibrator-service.elden
 
 PRODUCT_COPY_FILES += \
@@ -417,14 +296,7 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi-V4-ndk.vendor \
     android.hardware.wifi-service \
-    android.hardware.wifi.common-V1-ndk.vendor \
-    android.hardware.wifi.common-V2-ndk.vendor \
-    android.hardware.wifi.hostapd-V2-ndk.vendor \
-    android.hardware.wifi.hostapd-V3-ndk.vendor \
-    android.hardware.wifi.supplicant-V3-ndk.vendor \
-    android.hardware.wifi.supplicant-V5-ndk.vendor \
     hostapd \
     hostapd_cli \
     libcld80211 \

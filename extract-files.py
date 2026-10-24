@@ -28,7 +28,7 @@ namespace_imports = [
 
 
 def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
-    return f'{lib}-{partition}' if partition == 'vendor' else None
+    return f'{lib}_{partition}' if partition == 'vendor' else None
 
 
 lib_fixups: lib_fixups_user_type = {
@@ -41,20 +41,33 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 
-def prebuilt(*libs: str) -> blob_fixup:
-    fixup = blob_fixup()
-    for lib in libs:
-        fixup = fixup.replace_needed(f'{lib}.so', f'{lib}_prebuilt.so')
-    return fixup
-
-
 blob_fixups: blob_fixups_user_type = {
+    'vendor/bin/hw/vendor.qti.hardware.display.composer-service': blob_fixup()
+        .replace_needed('vendor.qti.hardware.display.composer3-V1-ndk.so', 'vendor.qti.hardware.display.composer3-V1-ndk_vendor.so')
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     (
         'vendor/bin/hw/android.hardware.security.keymint-service-spu-qti',
         'vendor/lib64/libspukeymint.so',
-    ): prebuilt('android.hardware.security.sharedsecret-V2-ndk'),
+    ): blob_fixup()
+        .replace_needed('android.hardware.security.sharedsecret-V2-ndk.so', 'android.hardware.security.sharedsecret-V2-ndk_vendor.so'),
+    (
+        'vendor/lib64/camera/components/com.qti.node.dewarp.so',
+        'vendor/lib64/hw/com.qti.chi.override.so',
+        'vendor/lib64/libcamximageformatutils.so',
+        'vendor/lib64/libchifeature2.so',
+        'vendor/lib64/libqvrservice.so',
+        'vendor/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so',
+    ): blob_fixup()
+        .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V1-ndk_vendor.so'),
+    (
+        'vendor/lib64/libVoiceSdk.so',
+        'vendor/lib64/libcapiv2uvvendor.so',
+        'vendor/lib64/liblistensoundmodel2vendor.so',
+    ): blob_fixup()
+        .replace_needed('libtensorflowlite_c.so', 'libtensorflowlite_c_vendor.so'),
     (
         'vendor/bin/poweropt-service',
+        'vendor/lib64/hw/libaudioeffecthal.qti.so',
         'vendor/lib64/libaodoptfeature.so',
         'vendor/lib64/libapengine.so',
         'vendor/lib64/libcamerapoweroptfeature.so',
@@ -69,22 +82,9 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/libsdmclient.so',
         'vendor/lib64/libstandbyfeature.so',
         'vendor/lib64/libvideooptfeature.so',
-    ): prebuilt('libtinyxml2'),
-    (
-        'vendor/bin/hw/android.hardware.identity-service-qti',
-        'vendor/lib64/libqtiidentitycredential.so',
-        'vendor/lib64/libspukeymintprovision.so',
-    ): prebuilt('android.hardware.security.keymint-V2-ndk'),
-    'vendor/bin/hw/vendor.qti.hardware.display.composer-service': prebuilt(
-        'android.hardware.graphics.composer3-V3-ndk',
-        'vendor.qti.hardware.display.composer3-V1-ndk',
-        'libtinyxml2',
-    ),
-    (
-        'vendor/etc/init/vendor.lenovo.hardware.display-service.rc',
-        'vendor/etc/init/vendor.lenovo.hardware.performance-service.rc',
+        'vendor/lib64/soundfx/libquasar.so',
     ): blob_fixup()
-        .regex_replace(r'chmod 0?666 ', 'chmod 0660 '),
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     'vendor/etc/seccomp_policy/qsap_qapeservice.policy': blob_fixup()
         .add_line_if_missing('lseek: 1'),
     (
@@ -94,101 +94,37 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('p2p_optimize_listen_chan=1')
         .add_line_if_missing('bss_no_flush_when_down=1'),
     (
-        'vendor/lib64/btaudio_offload_if.so',
-        'vendor/lib64/hw/android.hardware.bluetooth.audio-impl-qti.so',
-        'vendor/lib64/libbluetooth_audio_session_aidl_qti.so',
-    ): prebuilt('android.hardware.bluetooth.audio-V4-ndk'),
-    (
         'vendor/lib64/c2.dolby.hevc.dec.so',
         'vendor/lib64/c2.dolby.hevc.sec.dec.so',
     ): blob_fixup()
         .add_needed('libcodec2_shim.so'),
     (
-        'vendor/lib64/camera/components/com.qti.node.dewarp.so',
-        'vendor/lib64/hw/com.qti.chi.override.so',
-        'vendor/lib64/libcamximageformatutils.so',
-        'vendor/lib64/libchifeature2.so',
-        'vendor/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so',
-    ): prebuilt('android.hardware.graphics.allocator-V1-ndk'),
-    'vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so': prebuilt(
-        'android.hardware.audio.core-V2-ndk',
-        'android.hardware.bluetooth.audio-V4-ndk',
-        'android.media.audio.common.types-V3-ndk',
-        'libaudioutils',
-    ),
-    'vendor/lib64/hw/audio.bluetooth_qti.default.so': prebuilt(
-        'android.hardware.bluetooth.audio-V4-ndk',
-        'libaudioutils',
-    ),
-    (
+        'vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so',
+        'vendor/lib64/hw/audio.bluetooth_qti.default.so',
         'vendor/lib64/hw/libaudiocorehal.default.so',
         'vendor/lib64/hw/libaudiocorehal.qti.so',
-    ): prebuilt(
-        'android.hardware.audio.core-V2-ndk',
-        'android.media.audio.common.types-V3-ndk',
-        'libaudioutils',
-    ),
-    (
-        'vendor/lib64/hw/libaudioeffecthal.qti.so',
-        'vendor/lib64/soundfx/libquasar.so',
-    ): prebuilt(
-        'android.media.audio.common.types-V3-ndk',
-        'libtinyxml2',
-    ),
-    (
-        'vendor/lib64/libVoiceSdk.so',
-        'vendor/lib64/libcapiv2uvvendor.so',
-        'vendor/lib64/liblistensoundmodel2vendor.so',
-    ): prebuilt('libtensorflowlite_c'),
+        'vendor/lib64/libbluetooth_audio_session_qti.so',
+        'vendor/lib64/libbluetooth_audio_session_qti_2_1.so',
+    ): blob_fixup()
+        .add_needed('libaudioutils_shim.so'),
     'vendor/lib64/libarcsoft_video_superportrait.so': blob_fixup()
         .clear_symbol_version('AHardwareBuffer_allocate')
         .clear_symbol_version('AHardwareBuffer_describe')
         .clear_symbol_version('AHardwareBuffer_lockPlanes')
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock'),
-    'vendor/lib64/soundfx/libhapticgenerator.so': prebuilt('libvibratorutils'),
-    'vendor/lib64/libaudioplatformconverter.qti.so': prebuilt(
-        'android.hardware.audio.core-V2-ndk',
-    ),
-    'vendor/lib64/libaudioserviceexampleimpl.so': prebuilt(
-        'android.hardware.audio.core-V2-ndk',
-        'android.hardware.bluetooth.audio-V4-ndk',
-        'libaudioutils',
-    ).add_needed('libbluetooth_audio_session_aidl_shim.so'),
-    (
-        'vendor/lib64/libbluetooth_audio_session_qti.so',
-        'vendor/lib64/libbluetooth_audio_session_qti_2_1.so',
-    ): prebuilt('libaudioutils'),
-    'vendor/lib64/libqcodec2_core.so': prebuilt(
-        'android.hardware.graphics.common-V5-ndk',
-    ),
+    'vendor/lib64/libaudioserviceexampleimpl.so': blob_fixup()
+        .add_needed('libaudioutils_shim.so')
+        .add_needed('libbluetooth_audio_session_aidl_shim.so'),
+    'vendor/lib64/libqcodec2_core.so': blob_fixup()
+        .remove_needed('android.hardware.graphics.common-V5-ndk.so'),
     'vendor/lib64/libqtigefar.so': blob_fixup()
         .remove_needed('android.hardware.audio.core-V2-ndk.so')
         .remove_needed('android.media.audio.common.types-V3-ndk.so'),
-    'vendor/lib64/libqvrservice.so': prebuilt(
-        'android.hardware.audio.core-V2-ndk',
-        'android.hardware.graphics.allocator-V1-ndk',
-        'android.media.audio.common.types-V3-ndk',
-        'vendor.qti.hardware.display.allocator@4.0',
-    ),
-    'vendor/lib64/libsxrservice.so': prebuilt(
-        'android.hardware.audio.core-V2-ndk',
-        'android.hardware.common-V2-ndk_platform',
-        'android.media.audio.common.types-V3-ndk',
-    ),
-    'vendor/lib64/libwfdmmsrc_proprietary.so': prebuilt(
-        'android.hardware.audio.core-V2-ndk',
-    ).remove_needed('android.media.audio.common.types-V2-ndk.so'),
-    (
-        'vendor/lib64/soundfx/libswdapaidl.so',
-        'vendor/lib64/soundfx/libswgamedapaidl.so',
-    ): prebuilt('android.media.audio.common.types-V3-ndk'),
-    'vendor/lib64/android.hardware.graphics.composer3-V3-ndk_prebuilt.so': prebuilt(
-        'android.hardware.graphics.common-V5-ndk',
-    ),
-    'vendor/lib64/vendor.qti.hardware.display.composer3-V1-ndk_prebuilt.so': prebuilt(
-        'android.hardware.graphics.composer3-V3-ndk',
-    ),
+    'vendor/lib64/libsxrservice.so': blob_fixup()
+        .replace_needed('android.hardware.common-V2-ndk_platform.so', 'android.hardware.common-V2-ndk.so'),
+    'vendor/lib64/libwfdmmsrc_proprietary.so': blob_fixup()
+        .remove_needed('android.media.audio.common.types-V2-ndk.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
