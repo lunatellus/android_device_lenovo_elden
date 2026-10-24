@@ -106,12 +106,6 @@ on early-boot
     verity_update_state
 
 on boot
-    # Vibrator
-    chown system system /dev/aw8697_haptic_r
-    chown system system /dev/aw8697_haptic_l
-    chmod 0660 /dev/aw8697_haptic_r
-    chmod 0660 /dev/aw8697_haptic_l
-
     write /dev/cpuset/audio-app/cpus 0-1
     # Add a cpuset for the camera daemon
     # We want all cores for camera

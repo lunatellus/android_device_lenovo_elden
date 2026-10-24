@@ -170,9 +170,6 @@ vendor.perf.framepacing.enable=1
 # QCOM
 ro.soc.manufacturer=QTI
 
-# QCOMsysD
-persist.vendor.qcomsysd.enabled=1
-
 # SPU
 vendor.spu.rkp_enabled=true
 
