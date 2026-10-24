@@ -7,5 +7,4 @@ type proc_touch_wake, fs_type, proc_type;
 type vendor_dolby_data_file, file_type, data_file_type;
 
 # Sysfs
-type vendor_sysfs_headset, fs_type, sysfs_type;
 type vendor_sysfs_vibrator, fs_type, sysfs_type;

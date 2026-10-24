@@ -17,10 +17,6 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator-service\.elden         u:object_r:hal_vibrator_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch-service\.elden              u:object_r:hal_lineage_touch_default_exec:s0
 
-# Headset
-/sys/devices/platform/soc/ac0000\.qcom,qupv3_1_geni_se/a94000\.i2c/i2c-[0-9]/[0-9]-0043/direction     u:object_r:vendor_sysfs_headset:s0
-/sys/devices/platform/soc/ac0000\.qcom,qupv3_1_geni_se/a94000\.i2c/i2c-[0-9]/[0-9]-0042/direction2    u:object_r:vendor_sysfs_headset:s0
-
 # Persist
 /mnt/vendor/persist/factory/vibcali_[lr]    u:object_r:vendor_persist_haptics_file:s0
 
