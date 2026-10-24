@@ -1,5 +1,0 @@
-binder_use(hal_lenovokeyboard_server)
-hal_attribute_service(hal_lenovokeyboard, hal_lenovokeyboard_service)
-
-binder_call(hal_lenovokeyboard_client, hal_lenovokeyboard_server)
-binder_call(hal_lenovokeyboard_server, hal_lenovokeyboard_client)

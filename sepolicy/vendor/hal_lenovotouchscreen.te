@@ -1,5 +1,0 @@
-binder_use(hal_lenovotouchscreen_server)
-hal_attribute_service(hal_lenovotouchscreen, hal_lenovotouchscreen_service)
-
-binder_call(hal_lenovotouchscreen_client, hal_lenovotouchscreen_server)
-binder_call(hal_lenovotouchscreen_server, hal_lenovotouchscreen_client)

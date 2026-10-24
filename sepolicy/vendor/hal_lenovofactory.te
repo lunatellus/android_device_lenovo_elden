@@ -1,5 +1,0 @@
-binder_use(hal_lenovofactory_server)
-hal_attribute_service(hal_lenovofactory, hal_lenovofactory_service)
-
-binder_call(hal_lenovofactory_client, hal_lenovofactory_server)
-binder_call(hal_lenovofactory_server, hal_lenovofactory_client)

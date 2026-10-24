@@ -2005,45 +2005,6 @@ vendor/lib64/libspukeymintdeviceutils.so
 vendor/lib64/libspukeymintprovision.so
 vendor/lib64/libspukeymintutils.so
 
-# Lenovo HALs
-vendor/bin/hw/vendor.lenovo.hardware.battery-service
-vendor/bin/hw/vendor.lenovo.hardware.display-service
-vendor/bin/hw/vendor.lenovo.hardware.factory-service
-vendor/bin/hw/vendor.lenovo.hardware.hyperschedule-service
-vendor/bin/hw/vendor.lenovo.hardware.keyboard-service
-vendor/bin/hw/vendor.lenovo.hardware.misc-service
-vendor/bin/hw/vendor.lenovo.hardware.performance-service
-vendor/bin/hw/vendor.lenovo.hardware.touchscreen-service
-vendor/bin/hw/vendor.lenovo.hardware.usb-service
-vendor/etc/init/vendor.lenovo.hardware.battery-service.rc
-vendor/etc/init/vendor.lenovo.hardware.display-service.rc
-vendor/etc/init/vendor.lenovo.hardware.factory-service.rc
-vendor/etc/init/vendor.lenovo.hardware.hyperschedule-service.rc
-vendor/etc/init/vendor.lenovo.hardware.keyboard-service.rc
-vendor/etc/init/vendor.lenovo.hardware.misc-service.rc
-vendor/etc/init/vendor.lenovo.hardware.performance-service.rc
-vendor/etc/init/vendor.lenovo.hardware.touchscreen-service.rc
-vendor/etc/init/vendor.lenovo.hardware.usb.rc
-vendor/etc/vintf/manifest/vendor.lenovo.hardware.battery-service.xml
-vendor/etc/vintf/manifest/vendor.lenovo.hardware.display-service.xml
-vendor/etc/vintf/manifest/vendor.lenovo.hardware.factory-service.xml
-vendor/etc/vintf/manifest/vendor.lenovo.hardware.hyperschedule-service.xml
-vendor/etc/vintf/manifest/vendor.lenovo.hardware.keyboard-service.xml
-vendor/etc/vintf/manifest/vendor.lenovo.hardware.misc-service.xml
-vendor/etc/vintf/manifest/vendor.lenovo.hardware.performance-service.xml
-vendor/etc/vintf/manifest/vendor.lenovo.hardware.touchscreen-service.xml
-vendor/etc/vintf/manifest/vendor.lenovo.hardware.usb.xml
-vendor/lib64/libLenovoNvram.so
-vendor/lib64/vendor.lenovo.hardware.battery-V5-ndk.so
-vendor/lib64/vendor.lenovo.hardware.display-V1-ndk.so
-vendor/lib64/vendor.lenovo.hardware.factory-V2-ndk.so
-vendor/lib64/vendor.lenovo.hardware.hyperschedule-V2-ndk.so
-vendor/lib64/vendor.lenovo.hardware.keyboard-V1-ndk.so
-vendor/lib64/vendor.lenovo.hardware.misc-V1-ndk.so
-vendor/lib64/vendor.lenovo.hardware.performance-V1-ndk.so
-vendor/lib64/vendor.lenovo.hardware.touchscreen-V3-ndk.so
-vendor/lib64/vendor.lenovo.hardware.usb-V1-ndk.so
-
 # Lights
 vendor/bin/hw/vendor.qti.hardware.lights.service
 vendor/etc/init/vendor.qti.hardware.lights.service.rc

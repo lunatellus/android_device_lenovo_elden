@@ -15,15 +15,6 @@
 
 # HALs
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator-service\.elden         u:object_r:hal_vibrator_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.battery-service          u:object_r:hal_lenovobattery_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.display-service          u:object_r:hal_lenovodisplay_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.factory-service          u:object_r:hal_lenovofactory_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.hyperschedule-service    u:object_r:hal_lenovohyperschedule_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.keyboard-service         u:object_r:hal_lenovokeyboard_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.misc-service             u:object_r:hal_lenovomisc_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.performance-service      u:object_r:hal_lenovoperformance_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.touchscreen-service      u:object_r:hal_lenovotouchscreen_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.lenovo\.hardware\.usb-service              u:object_r:hal_lenovousb_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch-service\.elden              u:object_r:hal_lineage_touch_default_exec:s0
 
 # Headset

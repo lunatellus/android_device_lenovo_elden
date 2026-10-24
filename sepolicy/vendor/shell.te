@@ -1,1 +1,0 @@
-allow shell vendor_sysfs_simtray:file { getattr open read };
