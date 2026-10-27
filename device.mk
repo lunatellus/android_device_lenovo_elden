@@ -149,11 +149,7 @@ PRODUCT_COPY_FILES += \
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.qti \
-    android.hardware.health-service.qti_recovery \
-    lineage_charger_animation_vendor \
-    lineage_charger_battery_fail_vendor \
-    lineage_charger_battery_scale_vendor \
-    lineage_charger_font_vendor
+    android.hardware.health-service.qti_recovery
 
 # Init
 PRODUCT_PACKAGES += \
@@ -200,9 +196,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage
-
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 PRODUCT_PACKAGES += \

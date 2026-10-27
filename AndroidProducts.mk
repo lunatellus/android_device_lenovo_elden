@@ -4,4 +4,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_elden.mk
+    $(LOCAL_DIR)/uwu_elden.mk

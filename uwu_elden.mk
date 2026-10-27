@@ -10,10 +10,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # Inherit from elden device
 $(call inherit-product, device/lenovo/elden/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_tablet_wifionly.mk)
+# Inherit some common uwuAOSP stuff.
+UWU_DEVICE_TYPE := tablet
+UWU_SUPPORTS_TELEPHONY := false
+$(call inherit-product, vendor/uwu/config/common.mk)
 
-PRODUCT_NAME := lineage_elden
+PRODUCT_NAME := uwu_elden
 PRODUCT_DEVICE := elden
 PRODUCT_MANUFACTURER := LENOVO
 PRODUCT_BRAND := Lenovo
