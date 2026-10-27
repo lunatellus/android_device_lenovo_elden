@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-FileCopyrightText: The LineageOS Project
+    SPDX-License-Identifier: Apache-2.0
+-->
+
+<!-- Power profile from Lenovo TB322FC ZUXOS 1.5.10.358. -->
+<device name="Android">
+    <item name="none">0</item>
+    <item name="screen.on">189</item>
+    <item name="screen.full">600</item>
+    <array name="cpu.clusters.cores">
+        <value>6</value>
+        <value>2</value>
+    </array>
+    <array name="cpu.core_speeds.cluster0">
+        <value>384000</value>
+        <value>556800</value>
+        <value>748800</value>
+        <value>960000</value>
+        <value>1152000</value>
+        <value>1363200</value>
+        <value>1555200</value>
+        <value>1785600</value>
+        <value>1996800</value>
+        <value>2227200</value>
+        <value>2400000</value>
+        <value>2745600</value>
+        <value>2918400</value>
+        <value>3072000</value>
+        <value>3321600</value>
+        <value>3532800</value>
+    </array>
+    <array name="cpu.core_power.cluster0">
+        <value>35</value>
+        <value>43</value>
+        <value>53</value>
+        <value>63</value>
+        <value>79</value>
+        <value>86</value>
+        <value>98</value>
+        <value>116</value>
+        <value>137</value>
+        <value>156</value>
+        <value>198</value>
+        <value>228</value>
+        <value>267</value>
+        <value>309</value>
+        <value>367</value>
+        <value>465</value>
+    </array>
+    <array name="cpu.core_speeds.cluster1">
+        <value>1017600</value>
+        <value>1209600</value>
+        <value>1401600</value>
+        <value>1689600</value>
+        <value>1958400</value>
+        <value>2246400</value>
+        <value>2438400</value>
+        <value>2649600</value>
+        <value>2841600</value>
+        <value>3072000</value>
+        <value>3283200</value>
+        <value>3513600</value>
+        <value>3801600</value>
+        <value>4089600</value>
+        <value>4204800</value>
+        <value>4320000</value>
+    </array>
+    <array name="cpu.core_power.cluster1">
+        <value>49</value>
+        <value>63</value>
+        <value>85</value>
+        <value>99</value>
+        <value>125</value>
+        <value>149</value>
+        <value>179</value>
+        <value>208</value>
+        <value>246</value>
+        <value>283</value>
+        <value>332</value>
+        <value>378</value>
+        <value>426</value>
+        <value>472</value>
+        <value>513</value>
+        <value>569</value>
+        <value>613</value>
+        <value>685</value>
+    </array>
+    <item name="cpu.active">32.56</item>
+    <item name="cpu.idle">8.5</item>
+    <item name="cpu.suspend">0</item>
+    <item name="battery.capacity">7600</item>
+    <item name="wifi.on">0.28</item>
+    <item name="wifi.active">166.62</item>
+    <item name="wifi.scan">51.49</item>
+    <item name="dsp.audio">46.77</item>
+    <item name="dsp.video">101.99</item>
+    <item name="camera.flashlight">330</item>
+    <item name="camera.avg">850.18</item>
+    <item name="gps.on">13.58</item>
+    <item name="radio.active">200</item>
+    <item name="radio.scanning">5.5</item>
+    <array name="radio.on">
+        <value>86</value>
+        <value>8</value>
+    </array>
+    <item name="modem.controller.idle">6</item>
+    <item name="modem.controller.rx">180</item>
+    <item name="modem.controller.tx">186</item>
+    <item name="modem.controller.voltage">3700</item>
+    <array name="memory.bandwidths">
+        <value>17</value>
+    </array>
+    <item name="wifi.controller.idle">1</item>
+    <item name="wifi.controller.rx">176</item>
+    <item name="wifi.controller.tx">200</item>
+    <array name="wifi.controller.tx_levels">1 </array>
+    <item name="wifi.controller.voltage">3700</item>
+    <array name="wifi.batchedscan">
+        <value>.0001</value>
+        <value>.001</value>
+        <value>.01</value>
+        <value>.1</value>
+        <value>1</value>
+    </array>
+    <item name="bluetooth.active">19.85</item>
+    <item name="bluetooth.on">1.06</item>
+    <item name="bluetooth.controller.voltage">3700</item>
+</device>
