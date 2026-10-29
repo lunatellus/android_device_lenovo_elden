@@ -94,6 +94,7 @@ phy-msm-ssusb-qmp.ko
 phy-msm-m31-eusb2.ko
 redriver.ko
 dwc3-msm.ko
+snd-usb-audio-qmi.ko
 f_fs_ipc_log.ko
 usb_f_cdev.ko
 usb_f_ccid.ko
