@@ -153,6 +153,8 @@ ro.incremental.enable=yes
 # Keymaster
 ro.crypto.metadata_init_delete_all_keys.enabled=true
 ro.hardware.keystore_desede=true
+ro.product.device_for_attestation=TB322FC
+ro.product.name_for_attestation=TB322FC_PRC
 vendor.gatekeeper.disable_spu=true
 vendor.gatekeeper.is_security_level_spu=0
 
