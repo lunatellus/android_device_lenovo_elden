@@ -30,4 +30,9 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl">
+        <name>vendor.qti.hardware.spu</name>
+        <version>2</version>
+        <fqname>ISPUManager/default</fqname>
+    </hal>
 </manifest>
