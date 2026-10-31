@@ -2637,6 +2637,14 @@ vendor/etc/vintf/manifest/vendor.qti.hardware.soter-service.xml
 vendor/lib64/hw/vendor.qti.hardware.soter-impl.so
 vendor/lib64/vendor.qti.hardware.soter-V1-ndk.so
 
+# SPU
+vendor/bin/hw/vendor.qti.hardware.spu-service
+vendor/bin/sec_nvm
+vendor/bin/spdaemon
+vendor/etc/init/init.spdaemon.rc
+vendor/etc/init/init.vendor.qti.hardware.spu.service.rc
+vendor/lib64/vendor.qti.hardware.spu-V2-ndk.so
+
 # SSR
 vendor/bin/ssr_diag
 vendor/bin/ssr_setup
