@@ -2660,6 +2660,9 @@ vendor/bin/tftp_server
 vendor/etc/init/vendor.qti.tftp.rc
 
 # Thermal
+vendor/bin/hw/android.hardware.thermal-service.qti:vendor/bin/hw/android.hardware.thermal-service.elden
+vendor/etc/init/android.hardware.thermal-service.qti.rc:vendor/etc/init/android.hardware.thermal-service.elden.rc
+vendor/etc/vintf/manifest/android.hardware.thermal-service.qti.xml:vendor/etc/vintf/manifest/android.hardware.thermal-service.elden.xml
 vendor/lib64/liblmthermallistner.so
 vendor/lib64/libthermalclient.so
 

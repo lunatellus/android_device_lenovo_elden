@@ -244,10 +244,6 @@ PRODUCT_SOONG_NAMESPACES += \
 # Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal-service.qti
-
 # Touch
 PRODUCT_PACKAGES += \
     vendor.lineage.touch-service.elden
