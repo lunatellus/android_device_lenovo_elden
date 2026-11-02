@@ -85,6 +85,8 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/soundfx/libquasar.so',
     ): blob_fixup()
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
+    'vendor/etc/init/android.hardware.thermal-service.elden.rc': blob_fixup()
+        .regex_replace(r'/vendor/bin/hw/android\.hardware\.thermal-service\.qti', '/vendor/bin/hw/android.hardware.thermal-service.elden'),
     'vendor/etc/seccomp_policy/qsap_qapeservice.policy': blob_fixup()
         .add_line_if_missing('lseek: 1'),
     (
