@@ -68,6 +68,10 @@ ro.vendor.bluetooth.btconfigstore=false
 ro.camera.enableCamera1MaxZsl=1
 
 # Display
+ro.vendor.display.cabl=2
+ro.vendor.display.paneltype=1
+vendor.display.cabl.config=1
+vendor.display.cabl.config_path=/vendor/etc/cablconfig.xml
 vendor.display.comp_mask=0
 vendor.display.disable_3d_adaptive_tm=1
 vendor.display.disable_dynamic_fps=1
