@@ -42,6 +42,8 @@ lib_fixups: lib_fixups_user_type = {
 
 
 blob_fixups: blob_fixups_user_type = {
+    'vendor/bin/init.kernel.post_boot-memory.sh': blob_fixup()
+        .regex_replace('#configure_zram_parameters', 'configure_zram_parameters'),
     'vendor/bin/hw/vendor.qti.hardware.display.composer-service': blob_fixup()
         .replace_needed('vendor.qti.hardware.display.composer3-V1-ndk.so', 'vendor.qti.hardware.display.composer3-V1-ndk_vendor.so')
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
