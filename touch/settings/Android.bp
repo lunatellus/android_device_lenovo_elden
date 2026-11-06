@@ -1,0 +1,12 @@
+android_app {
+    name: "EldenTouchSettings",
+    srcs: ["src/**/*.java"],
+    static_libs: [
+        "SettingsLibCollapsingToolbarBaseActivity",
+        "SettingsLibPreference",
+    ],
+    platform_apis: true,
+    certificate: "platform",
+    privileged: true,
+    system_ext_specific: true,
+}

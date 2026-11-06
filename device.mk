@@ -246,7 +246,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Touch
 PRODUCT_PACKAGES += \
+    EldenTouchSettings \
+    elden-touch-service \
     vendor.lineage.touch-service.elden
+
+PRODUCT_SYSTEM_SERVER_JARS += elden-touch-service
 
 # Update engine
 PRODUCT_PACKAGES += \

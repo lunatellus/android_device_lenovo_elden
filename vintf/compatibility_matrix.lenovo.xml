@@ -25,10 +25,10 @@
         </interface>
     </hal>
     <hal format="aidl" optional="true">
-        <name>vendor.lineage.touch</name>
+        <name>vendor.lenovo.elden.touch</name>
         <version>1</version>
         <interface>
-            <name>IGloveMode</name>
+            <name>ITouch</name>
             <instance>default</instance>
         </interface>
     </hal>

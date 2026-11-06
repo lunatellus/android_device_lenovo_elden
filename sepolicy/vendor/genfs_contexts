@@ -1,6 +1,10 @@
 genfscon proc /HighReportRate       u:object_r:proc_high_report_rate:s0
 genfscon proc /gesture_control      u:object_r:proc_touch_wake:s0
 genfscon proc /report_threshold     u:object_r:proc_report_threshold:s0
+genfscon proc /game_mode            u:object_r:proc_touch_config:s0
+genfscon proc /game_edge            u:object_r:proc_touch_config:s0
+genfscon proc /panel_direction      u:object_r:proc_touch_config:s0
+genfscon proc /support_pen          u:object_r:proc_touch_config:s0
 
 genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,ucsi/power_supply/ucsi-source-psy-soc:qcom,pmic_glink:qcom,ucsi2    u:object_r:vendor_sysfs_usb_supply:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,ucsi/power_supply/ucsi-source-psy-soc:qcom,pmic_glink:qcom,ucsi2/wakeup    u:object_r:sysfs_wakeup:s0

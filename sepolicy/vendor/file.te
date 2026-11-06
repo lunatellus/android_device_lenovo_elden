@@ -2,6 +2,7 @@
 type proc_high_report_rate, fs_type, proc_type;
 type proc_report_threshold, fs_type, proc_type;
 type proc_touch_wake, fs_type, proc_type;
+type proc_touch_config, fs_type, proc_type;
 
 # Data
 type vendor_dolby_data_file, file_type, data_file_type;

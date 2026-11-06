@@ -11,16 +11,17 @@
 #include <android/binder_manager.h>
 #include <android/binder_process.h>
 
-using aidl::vendor::lineage::touch::GloveMode;
+using aidl::vendor::lenovo::elden::touch::Touch;
 using aidl::vendor::lineage::touch::HighTouchPollingRate;
 
 int main() {
     ABinderProcess_setThreadPoolMaxThreadCount(0);
 
-    std::shared_ptr<GloveMode> gm = ndk::SharedRefBase::make<GloveMode>();
-    const std::string gmInstance = std::string(GloveMode::descriptor) + "/default";
-    binder_status_t status = AServiceManager_addService(gm->asBinder().get(), gmInstance.c_str());
-    CHECK_EQ(status, STATUS_OK) << "Failed to add service " << gmInstance;
+    std::shared_ptr<Touch> touch = ndk::SharedRefBase::make<Touch>();
+    const std::string touchInstance = std::string(Touch::descriptor) + "/default";
+    binder_status_t status =
+            AServiceManager_addService(touch->asBinder().get(), touchInstance.c_str());
+    CHECK_EQ(status, STATUS_OK) << "Failed to add service " << touchInstance;
 
     std::shared_ptr<HighTouchPollingRate> htpr =
             ndk::SharedRefBase::make<HighTouchPollingRate>();

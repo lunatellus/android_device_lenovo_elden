@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="touch_settings_title">Touch control</string>
+    <string name="touch_sensitivity_title">Tap sensitivity</string>
+    <string name="touch_swipe_responsiveness_title">Swipe responsiveness</string>
+    <string name="touch_pen_enabled_title">Stylus support</string>
+    <string name="touch_corner_inhibition_title">Accidental touch protection</string>
+
+    <string-array name="touch_levels" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="touch_corner_inhibition_entries">
+        <item>Off</item>
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+</resources>

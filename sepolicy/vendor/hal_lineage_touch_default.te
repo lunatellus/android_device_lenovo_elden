@@ -1,4 +1,5 @@
 allow hal_lineage_touch_default {
     proc_high_report_rate
     proc_report_threshold
+    proc_touch_config
 }:file rw_file_perms;

@@ -4,6 +4,10 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+    <string-array name="config_deviceSpecificSystemServices" translatable="false">
+        <item>org.lineageos.elden.touch.EldenTouchService</item>
+    </string-array>
+
     <!-- Indicate available ColorDisplayManager.COLOR_MODE_xxx. -->
     <integer-array name="config_availableColorModes">
         <item>0</item>

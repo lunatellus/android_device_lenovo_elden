@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.lineageos.elden.settings"
+    android:sharedUserId="android.uid.system">
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <application
+        android:label="@string/touch_settings_title"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EldenTouchSettings">
+        <activity
+            android:name=".TouchSettingsActivity"
+            android:exported="false"
+            android:label="@string/touch_settings_title">
+            <intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.display" />
+            <meta-data
+                android:name="com.android.settings.profile"
+                android:value="primary_profile_only" />
+        </activity>
+    </application>
+</manifest>
