@@ -3,6 +3,38 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+aidl_interface {
+    name: "vendor.lenovo.elden.touch",
+    vendor_available: true,
+    srcs: ["aidl/vendor/lenovo/elden/touch/*.aidl"],
+    local_include_dir: "aidl",
+    stability: "vintf",
+    owner: "lenovo",
+    backend: {
+        cpp: {
+            enabled: false,
+        },
+        java: {
+            sdk_version: "module_current",
+        },
+    },
+    frozen: true,
+    versions_with_info: [
+        {
+            version: "1",
+            imports: [],
+        },
+    ],
+}
+
+java_library {
+    name: "elden-touch-service",
+    installable: true,
+    srcs: ["systemserver/src/**/*.java"],
+    libs: ["services.core"],
+    static_libs: ["vendor.lenovo.elden.touch-V1-java"],
+}
+
 cc_binary {
     name: "vendor.lineage.touch-service.elden",
     init_rc: ["vendor.lineage.touch-service.elden.rc"],
@@ -16,6 +48,7 @@ cc_binary {
     shared_libs: [
         "libbase",
         "libbinder_ndk",
+        "vendor.lenovo.elden.touch-V1-ndk",
         "vendor.lineage.touch-V1-ndk",
     ],
 }

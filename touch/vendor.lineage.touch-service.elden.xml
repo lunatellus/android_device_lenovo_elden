@@ -2,7 +2,11 @@
     <hal format="aidl">
         <name>vendor.lineage.touch</name>
         <version>1</version>
-        <fqname>IGloveMode/default</fqname>
         <fqname>IHighTouchPollingRate/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.lenovo.elden.touch</name>
+        <version>1</version>
+        <fqname>ITouch/default</fqname>
     </hal>
 </manifest>

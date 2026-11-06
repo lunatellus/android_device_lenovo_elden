@@ -7,20 +7,23 @@
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
-#include <cstdio>
 
 using ::android::base::ReadFileToString;
 using ::android::base::WriteStringToFile;
 
 namespace {
 
-constexpr const char* kGloveModePath = "/proc/report_threshold";
+constexpr const char* kTapSensitivityPath = "/proc/report_threshold";
+constexpr const char* kSwipeResponsivenessPath = "/proc/game_mode";
+constexpr const char* kPenModePath = "/proc/support_pen";
+constexpr const char* kPanelDirectionPath = "/proc/panel_direction";
+constexpr const char* kCornerInhibitionPath = "/proc/game_edge";
 constexpr const char* kHighTouchPollingRatePath = "/proc/HighReportRate";
 
 ndk::ScopedAStatus readNode(const char* path, bool* enabled) {
     std::string value;
     if (!ReadFileToString(path, &value)) {
-        LOG(ERROR) << "Failed to read " << path;
+        PLOG(ERROR) << "Failed to read " << path;
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
 
@@ -34,52 +37,52 @@ ndk::ScopedAStatus readNode(const char* path, bool* enabled) {
     return ndk::ScopedAStatus::ok();
 }
 
-ndk::ScopedAStatus writeNode(const char* path, bool enabled) {
-    if (!WriteStringToFile(enabled ? "1" : "0", path, true)) {
-        LOG(ERROR) << "Failed to write " << path;
+ndk::ScopedAStatus writeNode(const char* path, int32_t value, int32_t maximum) {
+    if (value < 0 || value > maximum) {
+        return ndk::ScopedAStatus::fromExceptionCodeWithMessage(
+                EX_ILLEGAL_ARGUMENT, "Unsupported touch value");
+    }
+    if (!WriteStringToFile(std::to_string(value), path, true)) {
+        PLOG(ERROR) << "Failed to write " << path;
         return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
     }
-
     return ndk::ScopedAStatus::ok();
 }
 
 }  // anonymous namespace
 
-namespace aidl {
-namespace vendor {
-namespace lineage {
-namespace touch {
+namespace aidl::vendor::lenovo::elden::touch {
 
-ndk::ScopedAStatus GloveMode::getEnabled(bool* _aidl_return) {
-    std::string value;
-    if (!ReadFileToString(kGloveModePath, &value)) {
-        LOG(ERROR) << "Failed to read " << kGloveModePath;
-        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
-    }
-
-    int state;
-    if (std::sscanf(value.c_str(), "Report Threshold state %d!", &state) != 1) {
-        LOG(ERROR) << "Unexpected value in " << kGloveModePath << ": " << value;
-        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
-    }
-
-    *_aidl_return = state == 0;
-    return ndk::ScopedAStatus::ok();
+ndk::ScopedAStatus Touch::setTapSensitivity(int32_t level) {
+    return writeNode(kTapSensitivityPath, level, 3);
 }
 
-ndk::ScopedAStatus GloveMode::setEnabled(bool enabled) {
-    return writeNode(kGloveModePath, !enabled);
+ndk::ScopedAStatus Touch::setSwipeResponsiveness(int32_t level) {
+    return writeNode(kSwipeResponsivenessPath, level, 3);
 }
+
+ndk::ScopedAStatus Touch::setPenMode(bool enabled) {
+    return writeNode(kPenModePath, enabled, 1);
+}
+
+ndk::ScopedAStatus Touch::setPanelDirection(int32_t rotation) {
+    return writeNode(kPanelDirectionPath, rotation, 3);
+}
+
+ndk::ScopedAStatus Touch::setCornerInhibition(int32_t mode) {
+    return writeNode(kCornerInhibitionPath, mode, 3);
+}
+
+}  // namespace aidl::vendor::lenovo::elden::touch
+
+namespace aidl::vendor::lineage::touch {
 
 ndk::ScopedAStatus HighTouchPollingRate::getEnabled(bool* _aidl_return) {
     return readNode(kHighTouchPollingRatePath, _aidl_return);
 }
 
 ndk::ScopedAStatus HighTouchPollingRate::setEnabled(bool enabled) {
-    return writeNode(kHighTouchPollingRatePath, enabled);
+    return writeNode(kHighTouchPollingRatePath, enabled, 1);
 }
 
-}  // namespace touch
-}  // namespace lineage
-}  // namespace vendor
-}  // namespace aidl
+}  // namespace aidl::vendor::lineage::touch

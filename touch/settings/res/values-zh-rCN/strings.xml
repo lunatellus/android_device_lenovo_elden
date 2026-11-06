@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="touch_settings_title">触控调节</string>
+    <string name="touch_sensitivity_title">点击灵敏度</string>
+    <string name="touch_swipe_responsiveness_title">滑动跟手性</string>
+    <string name="touch_pen_enabled_title">支持手写笔</string>
+    <string name="touch_corner_inhibition_title">边缘防误触</string>
+
+    <string-array name="touch_corner_inhibition_entries">
+        <item>关闭</item>
+        <item>小</item>
+        <item>中</item>
+        <item>大</item>
+    </string-array>
+</resources>
