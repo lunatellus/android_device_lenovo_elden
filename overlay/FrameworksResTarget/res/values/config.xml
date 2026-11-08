@@ -7,6 +7,10 @@
     <bool name="config_appCompatUserAppAspectRatioSettingsIsEnabled">true</bool>
     <bool name="config_appCompatUserAppAspectRatioFullscreenIsEnabled">true</bool>
 
+    <string-array name="device_configs_override" translatable="false">
+        <item>window_manager/ignore_activity_orientation_request_screens=large</item>
+    </string-array>
+
     <string-array name="config_deviceSpecificSystemServices" translatable="false">
         <item>org.lineageos.elden.touch.EldenTouchService</item>
     </string-array>
